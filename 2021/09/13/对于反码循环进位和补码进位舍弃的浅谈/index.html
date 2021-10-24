@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 5.4.0">
+
+  
+
+  
+
+  
+    <meta name="author" content="shen">
+  
+
+  
+
+  
+
+  <title>对于反码循环进位和补码进位舍弃的浅谈 | Monstershen</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@1.1.3/index.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs@9.16.2/styles/monokai.css">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(https://qiniu.sukoshi.xyz/src/images/68686407_p0.jpg)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          Monstershen
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a href="/links">友链</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">关于</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">对于反码循环进位和补码进位舍弃的浅谈</h1>
+          <h2 class="title-sub-wrap">
+            <strong>shen</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2021-09-13T11:10:52.000Z" itemprop="datePublished">2021-09-13</time>
+          </h2>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/categories/%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86/">📒 编码原理</a></li>
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/tags/%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86/">🏷️ 编码原理</a></li>
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <h3 id="反码循环进位与补码的进位舍弃理解"><a href="#反码循环进位与补码的进位舍弃理解" class="headerlink" title="反码循环进位与补码的进位舍弃理解"></a>反码循环进位与补码的进位舍弃理解</h3><p>相信大家在学计算机的时候，二进制接触最多的就是  <strong>原码</strong>，<strong>反码</strong>，<strong>补码</strong>，本篇博文将会简单介绍这三种 二进制编码，然后再谈鄙人对反码补码计算规则的理解。</p>
+<h4 id="对于三种编码的简单介绍-："><a href="#对于三种编码的简单介绍-：" class="headerlink" title="对于三种编码的简单介绍 ："></a>对于三种编码的简单介绍 ：</h4><span id="more"></span>
+
+<ul>
+<li><ol>
+<li><p><strong>原码</strong>：</p>
+<p>原码(true form)是一种计算机中对数字的二进制定点表示方法。 原码表示法在数值前面增加了一位符号位（即最高位为符号位）：正数该位为0，负数该位为1（0有两种表示：+0和-0），其余位表示数值的大小。</p>
+<p>相信聪明的读者肯定会想到，既然0的表示不唯一，那它肯定不能再计算机中使用，因为计算机不能像真人一样有思考，它只是运算的机器。这是一点。还有一点就是因为原码的计算总出现错误，举个简单的例子，0001（1） + 1001（-1） = 1010（-2），这显然是荒谬的。于是便出现了反码。</p>
+</li>
+<li><p><strong>反码</strong>：</p>
+<p>反码是一种在计算机中数的机器码表示。 对于单个数值（二进制的0 和1）而言，对其进行取反操作就是将0 变为1，1 变为0。 正数的反码和原码一样，负数的反码就是在原码的基础上符号位保持不变，其他位取反。<strong>看到此处只能让你会求反码，但要理解还请往下看</strong>。在上个问题上 0001（1） + 1001（-1） = 1010（-2），用反码的话就会得到：0001（-1） + 1110（-1） = 1111（-0），虽然结果是-0，但是显然结果比直接错误要好。但是，又一想，为啥不是唯一的0。我们接着计算：1110（-1）+ 1101（-2） = 1011（-4）? ? ? 为何会这样？但是，似乎问题不大，因为对于两个负数相加，我们完全可以当成整数，然后把符号位强制换成<strong>1</strong>，但是0不唯一的问题还是没法解决。于是出现了补码，这个0唯一，且特征明显的好方法。</p>
+</li>
+<li><p><strong>补码</strong>：</p>
+<p>补码的定义建议自己百度，因为它具有某些特殊含义。但是计算方法这里可以浅浅道来。</p>
+<ol>
+<li>利用反码 + 1 获得</li>
+<li>先求原码，从最低位往前看，从第一个1开始，后面每一位取反，符号位不变。当然，正数的补码还是和原码一样。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="对于反码（循环进位）和补码（进位舍弃）计算规则的理解。"><a href="#对于反码（循环进位）和补码（进位舍弃）计算规则的理解。" class="headerlink" title="对于反码（循环进位）和补码（进位舍弃）计算规则的理解。"></a>对于反码（循环进位）和补码（进位舍弃）计算规则的理解。</h4><ul>
+<li><ol>
+<li><p>首先简单介绍一下反码：</p>
+<ol>
+<li><p>正数的反码等于原码，等于本身，但是负数就不是，负数相当于在原数的基础上加了一个2^n-1，至于为啥是2^n - 1，且听我娓娓道来。</p>
+<p>首先，在值为负数的情况下，以4位二进制数为例，比如-3，它的反码是1100，如果按二进制的计算规则，1100就是12，这里你可能还有点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1100（-3） --》》 12</span><br></pre></td></tr></table></figure>
+
+<p>再举个例子，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1110（-1） --》》 14</span><br></pre></td></tr></table></figure>
+
+<p>看到这里，如果还没有看出来某些规律的话，那就把他们的绝对值加起来，</p>
+<p>哦哦哦！！！</p>
+<p>是不是突然发现，他们的和都是 15 ？</p>
+<p>想必大家已经有一点感觉了，那就听我接着来谈。</p>
+<p>15是啥？1111？ -0？没错，就是<br>$$<br>2^4-1<br>$$<br>如果是一面钟表的话，反码的“钟表”最后一格相当于没有内容，其他很类似，比如-1，那就往前走一个单位，是14，-0就是15，是不是感觉很奇妙？这就对了。同样的相应的整数，就是正常的往后走。</p>
+<p>于是我们可以得出来：<br>$$<br>x（反码） = x  ，x是正数，<br>x（反码） = x + 2^n - 1 ，x是负数<br>$$<br>此处的反码，均可理解为无符号数。</p>
+</li>
+</ol>
+</li>
+<li><p><strong>正餐开始</strong>，鄙人对于循环进位的理解：</p>
+<p>因为进位有溢出的情况，此处<strong>只讨论不溢出</strong>的问题。</p>
+<p>大家都知道，两个数相加有3种情况：</p>
+<ul>
+<li><p>正 + 正</p>
+</li>
+<li><p>正 + 负</p>
+</li>
+<li><p>负 + 负</p>
+</li>
+<li><p>1 . 因为正数的反码与原码一样，所以正数 + 正数，答案一定正确，</p>
+</li>
+<li><ol start="2">
+<li><p>当一正一负时：假设第一个数为A，第二个数为B</p>
+<ol>
+<li><p>A + B &gt; 0</p>
+<p>此时，一定会产生进位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">理由是</span><br><span class="line">A(反码) + B（反码） = A + B + 2^n - 1，</span><br><span class="line">由于A + B &gt; 0,于是 上面的式子一定  &gt;  2^n - 1,</span><br><span class="line">而，它最多表示  2^n-1 ，因此 肯定产生进位，</span><br></pre></td></tr></table></figure>
+
+<p>接下来，我们要知道我们的目标，因为  A + B &gt; 0 ,于是 （A + B）的反码是正数，</p>
+<p>就是  A（反码） + B （反码） = （A + B）反码   = （A+B）</p>
+<p>又 A(反码) + B（反码） = A + B + 2^n - 1，</p>
+<p>那么如何 把 A + B + 2^n - 1   —&gt;  A + B 呢？</p>
+<p>很简单，- 2^n  + 1，那如何操作呢？就是 舍去进位的 1（由于进位是最高位，于是，1 就代表了2^n ），再在最后加上 1。</p>
+<p>至此，转换完成。</p>
+</li>
+<li><p>A + B &lt; 0 </p>
+<p>此时一定不会产生进位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">理由是</span><br><span class="line">A(反码) + B（反码） = A + B + 2^n - 1，</span><br><span class="line">由于A + B &lt; 0,于是 上面的式子一定  &lt;  2^n - 1,</span><br><span class="line">而，它最多表示  2^n-1 ，因此 肯定不产生进位，</span><br></pre></td></tr></table></figure>
+
+<p>于是此时，直接相加就是结果（此结果是反码）。</p>
+</li>
+<li><p>对于 A + B = 0,由于产生进位，在此，不进行讨论。</p>
+</li>
+</ol>
+</li>
+<li><p>当 两个全为负的时候，假设第一个数为A，第二个数为B</p>
+<p>此时一定有进位：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">理由是</span><br><span class="line">A(反码) + B（反码） = A + B + 2^n - 1 + 2^n - 1，</span><br><span class="line">是不是暂时看不明白？</span><br><span class="line">那我就把它拆一下：  [(A + B) + 2^n - 1] + 2^n - 1</span><br><span class="line">是不是突然想通了？如果没通，那就接着想（哈哈哈）,让我来吧：</span><br><span class="line">A + B 是一个负数，那么 [(A + B) + 2^n - 1] 就是一个负数的反码，它是一个正数（单纯的看不带符号位,符号是人为规定的），</span><br><span class="line">因此 [(A + B) + 2^n - 1] + 2^n - 1 &gt; 2^n - 1</span><br><span class="line">而，它最多表示  2^n-1 ，因此 肯定产生进位，</span><br></pre></td></tr></table></figure>
+
+<p>于是 和上面一样，我们要找我们的目标，来确定如何变换，让结果正确。</p>
+<p>很显然，我们的目标就是  (A + B) + 2^n - 1，</p>
+<p>但是似乎，如果单纯的 反码相加 多了一个  2^n - 1，</p>
+<p>因此，我们就和上面的操作一样，舍去最高进位，相当于减去 2^n  然后再在最后加上1，</p>
+<p>就变成我们想要的结果了。</p>
+<p>至此，完成。</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li><p>接下来就是补码的<strong>进位舍弃</strong>啦：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">介绍之前，我想浅浅谈一下补码，不知道你对补码的印象是啥？反码 + 1 吗？</span><br><span class="line"></span><br><span class="line">当然，没错，但是它只是一种计算方法</span><br><span class="line"></span><br><span class="line">有另一种理解，就是往前走，正数不变，负数就是往前走相应的步数，</span><br><span class="line"></span><br><span class="line">举例 比如 4位二进制，可以容纳16个数，而 16 就是它的 模，-1 的补码就是 1111（15）,1的补码是0001（1），</span><br><span class="line"></span><br><span class="line">-2的补码是14.</span><br><span class="line"></span><br><span class="line">它比反码还像钟表。</span><br></pre></td></tr></table></figure>
+
+
+
+<p>其实补码的进位舍弃和反码类似，只是将原来的 2^n - 1 变为 2^n。</p>
+<p>知道为变为变为 没有 - 1 了吗？</p>
+<p>聪明的你应该想到了，因为 补码 = 反码 + 1 啊</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">在此处，我写一下为何补码等于反码加1：</span><br><span class="line">大家都知道， 假设</span><br><span class="line">		-A 表示 负数n位二进制反码</span><br><span class="line">		用 H 表示 该位的 模</span><br><span class="line">		</span><br><span class="line">	由反码规则得： -A + A = 1111</span><br><span class="line">				1111 + 1 = H，（10进制）</span><br><span class="line">				也就是 H - 1 = -A + A，</span><br><span class="line">				移项，</span><br><span class="line">				H - A = -A + 1</span><br><span class="line">				这边是 左边就是 -A 的 补码 ，</span><br><span class="line">				由此， -A + 1 等于 -A 的 补码</span><br><span class="line">				</span><br><span class="line">暂时不太透彻，没事，我也理解了老半天（这方法是我自己想出来的，错误的话，还请大家指正）。</span><br></pre></td></tr></table></figure>
+
+<p>哈哈哈，惊喜不！！！</p>
+<p>其他的就和反码几乎一样了。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="感谢阅读，个人博文，难免有纰漏，还烦请大家批评指正。"><a href="#感谢阅读，个人博文，难免有纰漏，还烦请大家批评指正。" class="headerlink" title="感谢阅读，个人博文，难免有纰漏，还烦请大家批评指正。"></a>感谢阅读，个人博文，难免有纰漏，还烦请大家批评指正。</h5>
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+    <div class="card-text">
+      
+        <a href="/2021/09/22/%E5%AE%89%E8%A3%85kali%E4%BB%A5%E5%8F%8A%E7%AE%80%E5%8D%95%E7%9A%84%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">安装kali以及简单的网络配置</h2>
+        </a>
+      
+      <div class="card-text--row">Newer</div>
+    </div>
+  </article>
+</div>
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+    <div class="card-text">
+      
+        <a href="/2021/09/12/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%BE%9B%E9%85%B8/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">记录一下第一次搭建博客的辛酸</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="https://s.gravatar.com/avatar/2d6b803eea37de0257620d5fabee7e64?s=200&amp;r=g&amp;d=retro" class="soft-size--round soft-style--box" alt="Shenyiming">
+    
+    
+      <h2>Shenyiming</h2>
+    
+    
+      <p>贵在坚持</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>8</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        3
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        5
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+<section class="widget-toc widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-toc" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M134.50666666 767.46666668H460.8c27.73333333 0 50.24000001 22.50666668 50.24000001 50.23999999v50.13333333c0 27.73333333-22.50666668 50.24000001-50.24000001 50.24000001H134.50666666c-27.73333333 0-50.24000001-22.50666668-50.23999999-50.24000001v-50.13333333c0.10666668-27.73333333 22.50666668-50.24000001 50.24000001-50.24000001zM84.37333332 541.65333333h326.18666669c27.73333333 0 50.24000001 22.39999999 50.23999999 50.13333334v50.24000001c0 27.73333333-22.50666668 50.24000001-50.24000002 50.23999999H84.37333332c-27.73333333 0-50.24000001-22.50666668-50.23999999-50.23999999v-50.24000001c0-27.73333333 22.50666668-50.13333334 50.24000001-50.13333334zM134.50666666 315.83999999H460.8c27.73333333 0 50.24000001 22.50666668 50.24000001 50.24000001v50.24000001c0 27.73333333-22.50666668 50.13333334-50.24000001 50.13333333H134.50666666c-27.73333333 0-50.24000001-22.39999999-50.23999999-50.13333333v-50.24000001c0.10666668-27.84000001 22.50666668-50.24000001 50.24000001-50.23999999zM209.81333332 89.91999999h326.18666671c27.73333333 0 50.24000001 22.39999999 50.23999997 50.13333335v50.23999999c0 27.73333333-22.50666668 50.24000001-50.24000001 50.24000001H209.81333332c-27.73333333 0-50.24000001-22.50666668-50.23999999-50.24000001v-50.24000001c0-27.73333333 22.50666668-50.13333334 50.24000001-50.13333333zM692.05333333 623.36l274.66666669 176.00000002c23.36000001 14.93333333 30.08 45.97333334 15.14666666 69.33333332L954.77333334 910.93333333c-14.93333333 23.25333334-45.97333334 30.08-69.33333335 15.14666667l-274.66666666-176c-23.36000001-14.93333333-30.08-45.97333334-15.14666667-69.33333333l27.09333334-42.24000001c14.93333333-23.36000001 46.08000001-30.08 69.33333333-15.14666666z" fill="currentColor"></path>
+</svg>
+    <span>TOC</span>
+  </div>
+  <div class="widget-body">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E7%A0%81%E5%BE%AA%E7%8E%AF%E8%BF%9B%E4%BD%8D%E4%B8%8E%E8%A1%A5%E7%A0%81%E7%9A%84%E8%BF%9B%E4%BD%8D%E8%88%8D%E5%BC%83%E7%90%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">反码循环进位与补码的进位舍弃理解</span></a></li></ol>
+  </div>
+</section>
+
+
+      
+<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
+</svg>
+    <span>NOTICE</span>
+  </div>
+  <div class="widget-body">
+    <p>flex-block主题部分重构，详情查看https://github.com/miiiku/flex-block</p>
+  </div>
+</section>
+
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+        <li class="categorys-list-item">
+          <a href="/categories/misc/">
+            misc (2)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/Kali/">
+            Kali (1)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86/">
+            编码原理 (1)
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      <a href="/tags/kali%E5%AE%89%E8%A3%85/" style="font-size: 10px;" class="tags-cloud-0">kali安装</a> <a href="/tags/misc-zip/" style="font-size: 10px;" class="tags-cloud-0">misc zip</a> <a href="/tags/misc%E9%9A%90%E5%86%99%E6%9C%AF/" style="font-size: 10px;" class="tags-cloud-0">misc隐写术</a> <a href="/tags/%E5%BF%83%E5%BE%97/" style="font-size: 20px;" class="tags-cloud-10">心得</a> <a href="/tags/%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86/" style="font-size: 10px;" class="tags-cloud-0">编码原理</a>
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+     
+    <p>&copy; 2021 <a href="/" target="_blank">shen</a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+<!-- dplayer -->
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>
