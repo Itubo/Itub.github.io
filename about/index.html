@@ -24,7 +24,7 @@
 
   
 
-  <title>安装kali以及简单的网络配置 | Monstershen</title>
+  <title>about | Monstershen</title>
 
   
 
@@ -45,7 +45,7 @@
   <div class="root-container">
     
 <!-- header container -->
-<header class="header-container post">
+<header class="header-container">
   
     <div class="post-image" style="background-image: url(https://qiniu.sukoshi.xyz/src/images/68686407_p0.jpg)"></div>
   
@@ -95,147 +95,36 @@
 
   
   
-    <div class="header-content">
-      <div class="post-text layout-block">
-        <div class="layout-margin">
-          <h1 class="title-wrap">安装kali以及简单的网络配置</h1>
-          <h2 class="title-sub-wrap">
-            <strong>shen</strong>
-            <span>发布于</span>
-            <time  class="article-date" datetime="2021-09-22T14:07:54.000Z" itemprop="datePublished">2021-09-22</time>
-          </h2>
-          <ul class="wrap-list dark">
-  
-    <li><a href="/categories/Kali/">📒 Kali</a></li>
-  
-</ul>
-          <ul class="wrap-list dark">
-  
-    <li><a href="/tags/kali%E5%AE%89%E8%A3%85/">🏷️ kali安装</a></li>
-  
-</ul>
-        </div>
-      </div>
-    </div>
-  
 
   
+  
+    <div class="header-content">
+      <div class="post-text layout-block layout-padding">
+        <h1 class="title-wrap">about</h1>
+        
+      </div>
+    </div>
   
   
 </header>
 
-    <!-- 文章 -->
+    <!-- 分页(其他自定义页面) -->
 
-<!-- 文章内容 -->
+<!-- 自定义页面 -->
+
 <div class="body-container">
   <article class="content-container layout-block post-container">
     <div class="article-info">
       
-      
-      
-      
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h3 id="简单说一下kali的安装以及网络配置"><a href="#简单说一下kali的安装以及网络配置" class="headerlink" title="简单说一下kali的安装以及网络配置"></a>简单说一下kali的安装以及网络配置</h3><p>kali作为一个Linux的发行版本，因其内部集成了很多渗透扫描应用，而被众多网络安全爱好者所喜爱，博主虽然不是初次尝试安装kali，但是之前没有进行完整配置，因此，这次也算是从新开始。</p>
-<span id="more"></span>
-
-<p>首先在官网下载Zz压缩包，解压到安装位置。（在此不过多赘述）</p>
-<p>用Vm或者Vbox扫描解压后的文件。将这解压包解压后，就相当于完成了Kali的安装。开机。</p>
-<p>Kali默认账户：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">账号为： kali</span><br><span class="line">密码为： kali</span><br></pre></td></tr></table></figure>
-
-<p>进入后，就是初始界面。（全英文的）</p>
-<p>我在百度中搜索的默认的 root 用户密码为： toor</p>
-<p>但是我输入不正确，于是就想着更改root密码。</p>
-<p>过程也很简单：</p>
-<p>首先重启 kali</p>
-<p>在第一个选择界面 先按 ↓ 让系统不自启，然后 按  “e” </p>
-<p>进入编辑界面，在最后的 linux 开头的代码行 中找到 ro  改为 rw ，并在该代码行结尾 添加 “init=/bin/bash” (不需要加引号)</p>
-<p>F10保存后，进入单用户模式，在 # 后面 输入 passwd 进入 修改root密码。</p>
-<p>两次输入新密码后重启即可。</p>
-<p>此时，进入 root 用户，你会发现没有网络。</p>
-<p>那就配置网络：</p>
-<p>在进入kali系统时，你要确定你的网卡正常。</p>
-<p>很简单，在“编辑” 处，选择 “虚拟网络编辑器” 进入编辑即可。博主建议，不会搞得话，直接恢复默认，选择正确的网卡。之后再开机</p>
-<p>进入系统后，配置动态IP：</p>
-<p>进入 /etc/network/interfaces中</p>
-<p>在上一个本地网卡后（一般是文档末尾）添加</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">auto eth0</span><br><span class="line">iface eth0 inet dhcp</span><br></pre></td></tr></table></figure>
-
-<p>静态IP读者可以自己谷歌</p>
-<p>之后重启网络服务即可</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/networking restart</span><br></pre></td></tr></table></figure>
-
-
-
-<p> 在最后，再写一下修改Kali为中文的方式：</p>
-<p>第一步是换源：</p>
-<p>进入 /etc/apt/sources.list 源地址文件</p>
-<p>修改其中两个官方地址为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">阿里云</span><br><span class="line">deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line">中科大</span><br><span class="line">deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">其他的可以自己搜索。</span><br></pre></td></tr></table></figure>
-
-<p>在修改文档的时候，也有坑，用 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/apt/sources.list </span><br></pre></td></tr></table></figure>
-
-<p>可以修改这只读文件.</p>
-<p>之后输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure locales</span><br></pre></td></tr></table></figure>
-
-<p>选择 zh_CN UTF-8(空格选择)</p>
-<p>之后，在终端输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy</span><br></pre></td></tr></table></figure>
-
-<p>之后重启即可。</p>
-
-      </section>
-
-      
-      
-        <nav class="article-nav">
-          
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
-    
-    <div class="card-text">
-      
-        <a href="/2021/09/24/%E5%85%B3%E4%BA%8E%E5%9B%BE%E7%89%87%E9%A2%98%E7%9B%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">关于图片题目的基本步骤</h2>
-        </a>
-      
-      <div class="card-text--row">Newer</div>
-    </div>
-  </article>
-</div>
-          
-          
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
-    
-    <div class="card-text">
-      
-        <a href="/2021/09/13/%E5%AF%B9%E4%BA%8E%E5%8F%8D%E7%A0%81%E5%BE%AA%E7%8E%AF%E8%BF%9B%E4%BD%8D%E5%92%8C%E8%A1%A5%E7%A0%81%E8%BF%9B%E4%BD%8D%E8%88%8D%E5%BC%83%E7%9A%84%E6%B5%85%E8%B0%88/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">对于反码循环进位和补码进位舍弃的浅谈</h2>
-        </a>
-      
-      <div class="card-text--row">Older</div>
-    </div>
-  </article>
-</div>
-          
-        </nav>
-      
-
-      <section class="page-message-container layout-padding">
         
-
-
-  
-  
-
-  
-  
-
-
       </section>
+
+      
+      
+
+      
+      
     </div>
     <div class="widget-info">
       <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
@@ -272,8 +161,6 @@
     </div>
   </div>
 </section>
-
-      
 
       
 <section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
@@ -337,6 +224,7 @@
     </div>
   </article>
 </div>
+
 
     <!-- footer container -->
 <footer id="footer" class="footer">
