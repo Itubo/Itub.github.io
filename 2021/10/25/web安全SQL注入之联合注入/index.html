@@ -24,7 +24,7 @@
 
   
 
-  <title>记录一下第一次搭建博客的辛酸 | Monstershen</title>
+  <title>web安全SQL注入之联合注入 | Monstershen</title>
 
   
 
@@ -47,7 +47,7 @@
 <!-- header container -->
 <header class="header-container post">
   
-    <div class="post-image" style="background-image: url(/11.png)"></div>
+    <div class="post-image" style="background-image: url(/imgs/7.png)"></div>
   
 
   <!-- navbar -->
@@ -98,18 +98,20 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">记录一下第一次搭建博客的辛酸</h1>
+          <h1 class="title-wrap">web安全SQL注入之联合注入</h1>
           <h2 class="title-sub-wrap">
             <strong>shen</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2021-09-12T15:19:30.000Z" itemprop="datePublished">2021-09-12</time>
+            <time  class="article-date" datetime="2021-10-25T10:00:20.000Z" itemprop="datePublished">2021-10-25</time>
           </h2>
           <ul class="wrap-list dark">
+  
+    <li><a href="/categories/web%E5%AE%89%E5%85%A8/">📒 web安全</a></li>
   
 </ul>
           <ul class="wrap-list dark">
   
-    <li><a href="/tags/%E5%BF%83%E5%BE%97/">🏷️ 心得</a></li>
+    <li><a href="/tags/SQL%E6%B3%A8%E5%85%A5/">🏷️ SQL注入</a></li>
   
 </ul>
         </div>
@@ -133,47 +135,47 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <p>2021年的9月12号，一个正常的中午，因在机器数某些地方有些顿悟，就想用 github 搭建一个自己的空间，没事就传一些学习心得，笔记了。但是这一干就是一下午。</p>
-<p>node.js 和 github 与本地服务器 连接，默认已经完成。</p>
-<span id="more"></span>
-
-<ul>
-<li><ol>
-<li><p>首先大家得有一个github账号，这东西，你要搜这个文章了，应该是有的。</p>
-</li>
-<li><p>然后我用的<strong>hexo</strong> 搭建的博客主页。</p>
-</li>
-<li><p>接下来就开始 hexo的下载安装与配置了：</p>
+        <h3 id="web安全SQL注入之联合注入"><a href="#web安全SQL注入之联合注入" class="headerlink" title="web安全SQL注入之联合注入"></a>web安全SQL注入之联合注入</h3><p>通常把使用 union 语句将数据展示到页面上的注入的方法称为 union(联合查询)注入</p>
+<p>存在一下的步骤：</p>
 <ol>
-<li><p>首先在本地创建一个文件夹右键 选择</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git bush here</span><br></pre></td></tr></table></figure></li>
-<li><p>初始化此文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<p>在yml文件中，有一个 <strong>theme</strong>的配置项，默认为landscape 在你想改主题的时候需要换成你的主题的名字。</p>
-</li>
-<li><p>为文件夹添加静态文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g //hexo generate</span><br></pre></td></tr></table></figure></li>
-<li><p>在本地服务器运行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s // hexo server</span><br></pre></td></tr></table></figure></li>
-<li><p>接着便可以在搜索框搜索</p>
-<p>http:://localhost:4000</p>
-<p>在本地运行博客。</p>
-</li>
-<li><p>执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d  // hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>即可远程上传。</p>
-<p><strong>这里有一个坑</strong></p>
-<p>就是要提前在yml文件中配置 url 和 root  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">url: 就是你github page 那里创建的域名</span><br><span class="line">root: 看你的此文件夹是否在很目录，一般为根目录 即为 /  否则 自己百度</span><br></pre></td></tr></table></figure></li>
-<li><p>今天虽然浪费了很多时间在搞这个看似没用的东西，但是，这是一种态度，我相信，有了博客陪着我，今天就是开始，以后我会慢慢填充这个博客的，让它成为一个优秀的博客</p>
-</li>
+<li>判断注入点</li>
+<li>判断是整形还是字符型</li>
+<li>判断查询列数</li>
+<li>判断显示位</li>
+<li>获取所有数据库名</li>
+<li>获取数据库所有表名</li>
+<li>获取字段名</li>
+<li>获取字段中数据</li>
 </ol>
-</li>
-</ol>
-</li>
-</ul>
+<h4 id="1-判断是否是数字型注入："><a href="#1-判断是否是数字型注入：" class="headerlink" title="1.判断是否是数字型注入："></a>1.判断是否是数字型注入：</h4><p>判断注入点时，先不加引号，判断1 和 2-1 的回显是否一样。</p>
+<p>如果<strong>存在数字运算</strong>，则可判为<strong>数字型注入</strong>。</p>
+<p>即，我们可以输入点 $_GET[‘id’]，附近没有引号包裹。</p>
+<p>这个时候，我们可以直接连接数据库查询语句。</p>
+<h4 id="2-判断为字符型注入"><a href="#2-判断为字符型注入" class="headerlink" title="2. 判断为字符型注入"></a>2. 判断为字符型注入</h4><p>字符注入与数字型注入最大的区别就是在获取点附近包裹了引号。</p>
+<p>此时，我们用自己加引号去干扰查询语句</p>
+<p>比如 </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=<span class="string">&#x27;$_GET[&#x27;</span>get<span class="string">&#x27;]&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们可以用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get=<span class="number">1</span><span class="string">&#x27; # </span></span><br></pre></td></tr></table></figure>
+
+<p>注意，最后一个引号是为了注释掉包裹的后面那个引号，防止出现语法错误。</p>
+<h4 id="3-查询列数"><a href="#3-查询列数" class="headerlink" title="3.查询列数"></a>3.查询列数</h4><p>通常用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 去查询列数</span><br></pre></td></tr></table></figure>
+
+<p>一般 如果存在那一列的话，会回显正常，不存在，则会找不到资源。</p>
+<h4 id="4-判断显示位"><a href="#4-判断显示位" class="headerlink" title="4.判断显示位"></a>4.判断显示位</h4><p>判断显示位一般在知道列数后，select 1,2,3… 去看哪列会回显在界面上。</p>
+<h4 id="5-获取数据库名称"><a href="#5-获取数据库名称" class="headerlink" title="5.获取数据库名称"></a>5.获取数据库名称</h4><p>一般用 database() 语句，让其回显在界面中。</p>
+<h4 id="6-获取表名："><a href="#6-获取表名：" class="headerlink" title="6.获取表名："></a>6.获取表名：</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入的数据<span class="string">&#x27; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database()#</span></span><br><span class="line"><span class="string"># 其中 group_concat()，是组合语句，就是将所有表名都输出。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="7-获取字段名"><a href="#7-获取字段名" class="headerlink" title="7.获取字段名"></a>7.获取字段名</h4><p>一般是获取列名：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输入的数据<span class="string">&#x27; union select group_concat(column_name) from information_schema.columns where table_name=&quot;填这个表的名字&quot;#</span></span><br></pre></td></tr></table></figure>
+
+<p>博主看博客的时候发现也有 row 的，但因为还没遇上，不知道具体操作步骤。</p>
+<h4 id="8-最后就是获取想要的数据了"><a href="#8-最后就是获取想要的数据了" class="headerlink" title="8. 最后就是获取想要的数据了"></a>8. 最后就是获取想要的数据了</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数据<span class="string">&#x27; union select 列名 from 表名 #</span></span><br><span class="line"><span class="string">#注意，此处的表名可以不加引号。</span></span><br></pre></td></tr></table></figure>
+
+
+
 
       </section>
 
@@ -181,30 +183,16 @@
       
         <nav class="article-nav">
           
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
-    
-      <div class="card-cover" background-image-lazy data-img="/imgs/5.png"></div>
-    
-    <div class="card-text">
-      
-        <a href="/2021/09/13/%E5%AF%B9%E4%BA%8E%E5%8F%8D%E7%A0%81%E5%BE%AA%E7%8E%AF%E8%BF%9B%E4%BD%8D%E5%92%8C%E8%A1%A5%E7%A0%81%E8%BF%9B%E4%BD%8D%E8%88%8D%E5%BC%83%E7%9A%84%E6%B5%85%E8%B0%88/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">对于反码循环进位和补码进位舍弃的浅谈</h2>
-        </a>
-      
-      <div class="card-text--row">上篇</div>
-    </div>
-  </article>
-</div>
-          
           
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
+      <div class="card-cover" background-image-lazy data-img="/imgs/3.png"></div>
+    
     <div class="card-text">
       
-        <a href="/2021/09/12/my-first-blog/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">my first blog</h2>
+        <a href="/2021/10/24/web-SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">web-SQL注入之堆叠注入</h2>
         </a>
       
       <div class="card-text--row">下篇</div>
