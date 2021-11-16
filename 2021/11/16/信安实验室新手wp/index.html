@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 5.4.0">
+
+  
+    <meta name="description" content="嘿，记得每天都要进步哦！">
+  
+
+  
+
+  
+    <meta name="author" content="shen">
+  
+
+  
+
+  
+
+  <title>信安实验室新手wp | Monstershen</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@1.1.3/index.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs@9.16.2/styles/monokai.css">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(/imgs/15.png)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          Monstershen
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a href="/links">友链</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">关于</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">信安实验室新手wp</h1>
+          <h2 class="title-sub-wrap">
+            <strong>shen</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2021-11-16T15:39:02.000Z" itemprop="datePublished">2021-11-16</time>
+          </h2>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/categories/writeup/">📒 writeup</a></li>
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/tags/wp/">🏷️ wp</a></li>
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <h1 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h1><h3 id="小兔子"><a href="#小兔子" class="headerlink" title="小兔子"></a>小兔子</h3><p>题目描述是一段话，抓住兔子，说实话我第一时间没想起来干嘛的。</p>
+<p>将附件下载下来，是一个兔子的照片，按照misc图片隐写的步骤，我首先打开属性查看有没有一些特别的东西。</p>
+<p>然后呢，很巧，在备注中就发现了一个 = 号结尾的字符串，很显然，这是有有意为之。按照优先级和题目的分数，我盲猜，这是一个加密方式。首先想到的就是 base64,但就得到当头一棒，解出来啥都不是。于是，这样过了好多天，有一天呢，很好奇 为啥是兔子，就打开一个加密软件，开始翻阅各种加密方式，就找到一个名叫兔子的加密。于是，我就抓住了兔子。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/1.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h3 id="我在城楼观山景"><a href="#我在城楼观山景" class="headerlink" title="我在城楼观山景"></a>我在城楼观山景</h3><p>这道题，看 hint 是别卷了，让看图片，但是呢，这是马后炮行为。</p>
+<p>下载附件后，是一个txt文件，很明显，需要拉进 010editor看一下文件头，果然，不出我所料，是图片格式。修改成 PNG 后，是一个照片。然后就是旧方式。拉进formost、binwalk、看一下属性，图层，看一下有没有LSB隐写，一同下来，没啥发现，就很怀疑自己。what?这就结束了？很失望！就看看照片，然后图片右下角有一个黑点点吸引到了我，放大一看。挖槽，这真就是看图片啊。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/2.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>但是，我还是天真了，把这个提交后，发现是错误的。what？这不对吗？然后结合我之前做的哪些题，想到，后面的点很多余，于是，把 <em><strong>…</strong></em> 去掉后 就对了。</p>
+<h3 id="stream"><a href="#stream" class="headerlink" title="stream"></a>stream</h3><p>这道题，hint 是 hacker is everywhere</p>
+<p>下载下来 zip 文件后解压缩，有两个文件，一个是Wirehark头像，一个是流量包。很显然，需要用 Wirehark来进行流量分析。想到流量分析，我就发憷。毕竟自己做的不多。按照常理，打开文件后，我先用字符串搜索一波，结果，出来一个看似是答案的答案。打开后，用我那笨笨的鼠标从头拉到尾，只得到一个 flag.txt 的信息甚至有一句 账户账号。于是，没办法，我搜了一下 flag.txt竟然真有很奇怪的发现。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/3.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>这是一个编码方式，Unicode.</p>
+<p>解码后，便得到 flag:</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/4.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h3 id="如来的兽"><a href="#如来的兽" class="headerlink" title="如来的兽"></a>如来的兽</h3><p>总能看到与佛论禅来的急，这不，它又出现了。下载 txt 文档后，看题目是一个 与佛论禅，解密后，是全是拟声词，俗话所得好，百度就是好，搜与佛论禅后发现新大陆，还有兽语，啥的奇奇怪怪的。然后，就用兽语解出来了比较熟悉的社会主义核心价值观加密，解密后出现 flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">henu&#123;My_Buddha_is_merciful&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="PDF"><a href="#PDF" class="headerlink" title="PDF"></a>PDF</h3><p>这是一个PDF 题，通常 pdf 图片下面都会藏东西，于是，我打开</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/5.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>发现图片右边界有东西，果断 使用 A C V 大法，然后就发现 就是？不会吧等阴阳怪气的东西。当时我还单纯，以为这是 啥 摩尔斯加密，啥的，还有那个 ,忘了。但全都试了，甚至都自闭了。还是没出来。</p>
+<p>这样,解题过程就断了，因为我不知道那是啥。偶然间，将那个东西粘到火狐中，出现了阴阳怪气编码，于是，flag也出来了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">welcometohenu  包装上 前缀，就好了。</span><br></pre></td></tr></table></figure>
+
+<h3 id="QRcode"><a href="#QRcode" class="headerlink" title="QRcode"></a>QRcode</h3><p>下载下来是一个缺少内容的二维码，将二维码补齐</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/QRcode.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>用QR Research 扫一扫，出来了一段brainfuck编码。</p>
+<p>用brainfuck解密后，出现flag</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/6.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h3 id="Easymisc"><a href="#Easymisc" class="headerlink" title="Easymisc"></a>Easymisc</h3><p>这道题的 hint 神神秘秘的，总给我一种若即若离的感觉。果不其然，下载 名为 属性的 jpg图片后，我傻眼了。因为按照正常的操作来一遍，我首先在属性中找到一串特殊的字符，然后却不知道它解密方式。</p>
+<p>拉进 010 里边，想看看有没有隐藏压缩包了，有没有隐藏flag，结果一无所获。正当我踌躇满志但却 “步履蹒跚” 时，我注意到了图片上的英文。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/7.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>纳尼？这好像和 维吉尼亚 同音啊。茅塞顿开。赶紧打开我的编解码软件，一顿捣鼓，发现我没有key。what?这不是欺负人嘛，这能没有key？我接着找线索，突然想到 那迷惑的 hint ，突然意识到，图片中似乎也有一段。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/8.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dreamstime</span><br></pre></td></tr></table></figure>
+
+<p>这个看起来像是秘钥。用他解密在属性中发现的那段字符后，果然，就是flag</p>
+<h3 id="Trytouse"><a href="#Trytouse" class="headerlink" title="Trytouse"></a>Trytouse</h3><p>这道题，说实话，我是无意做出来的。这个是 寂静之眼，我呢对它一顿操作，结果伤害为0。只好先放弃。但是，一个偶然机会，我翻阅 群里边提供的 tools 工具时，发现，窝草？有一个名叫 寂静之眼 的软件？？？我当时立马打开，把这个图片拉进去，直接 decode 出现一串字符。我当时没想着这就是flag，于是又随便找一个图片进行测试decode，然后它没东西，我才知道，这一串字符就是特殊的隐藏的东西。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/9.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h3 id="bringboss"><a href="#bringboss" class="headerlink" title="bringboss"></a>bringboss</h3><p>打开文件后 发现一个很像是社会主义核心价值观加密的东西，但仔细一看，又不是。想到 hint 中 有培根那啥，于是想到培根加密。</p>
+<p>培根加密就是 将 字符 用 ab组合 代替，然后发现这个也符合，就尝试将其换为 AB</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/10.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>解密后</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/image-20211116121851778.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>看着不像，于是将AB 换了个 顺序</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/12.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>很显然，对了。</p>
+<h3 id="music"><a href="#music" class="headerlink" title="music"></a>music</h3><p>这道题，我没做出来，但是有点思路。</p>
+<p>因为 midi混音，于是我可以放进 Audacity 中发现可以看到频谱图，还有音调图，想着，可能是一种加密方式。用某款软件可以搞出来，但是这软件我还没找到。</p>
+<h1 id="Reverse"><a href="#Reverse" class="headerlink" title="Reverse"></a>Reverse</h1><h3 id="easy-re"><a href="#easy-re" class="headerlink" title="easy_re"></a>easy_re</h3><p>这道题，hint 说放入 ida中就有答案。我寻思着，这不是有手就行嘛，可是我似乎忘记了我没有手这个事。果然，拖入ida 中我也没有找到flag，于是就疯狂搜索ida的使用方法。果然，百度没有骗我，ida 有一个 指令 是 F5 进入反汇编界面。我尝试着来一次，果然，flag出来了。就是这么朴实无华。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/13.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h3 id="re1"><a href="#re1" class="headerlink" title="re1"></a>re1</h3><p>这道题嘛，上一个题学会了用 F5，可是呢，这道题，我第一时间竟然没有按出来。于是，接着百度大法。找到了一个 内容，说汇编中 string 都是可以再一个地方找出来的。照着操作。找到string 搜索 flag，诶还真有，但也明显，不是我想要的那个flag。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/14.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>双击，进入汇编界面。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/15.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>发现一个很不一样的16进制数，哪有数设置这么长的？</p>
+<p>R一下，发现竟然是惊喜哈哈哈哈哈哈或。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/16.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>这不就是 flag 嘛。</p>
+<h3 id="ez-xor"><a href="#ez-xor" class="headerlink" title="ez_xor"></a>ez_xor</h3><p>本人太菜了，这道题，咋说呢，第一次用 string 数据类型表示，异或后竟然不对…</p>
+<p>好吧，接着说题解。</p>
+<p>先看题目，就知道这道题是要用异或运算的。</p>
+<p>这道题也是 通过字符串 flag 定位 汇编代码 位置，通过 F5反汇编，看C代码发现，给出的是一个异或函数</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/17.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>很好理解，异或的结果再和0-31异或就是flag</p>
+<p>于是就写代码：</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/18.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>然后就拿到 flag 了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">henu&#123;5c5378fd74fbabfbbf2cbfd868d04826&#125;</span><br><span class="line">当然，外面的是我自己加的。</span><br></pre></td></tr></table></figure>
+
+<p> 这里有一点迷惑，就是我用string的时候 或者 字符数组不换行的时候，输出的结果总是多一个 “；” 号。</p>
+<h3 id="maze"><a href="#maze" class="headerlink" title="maze"></a>maze</h3><p>这道题嘛，首先，F5 进入C语言界面。</p>
+<p>读代码，emmm..算了，看关键位置。</p>
+<p>首先是一个 64元素的char数组，然后是一些 i 的赋值。</p>
+<p>这里先把地图给搞出来，我结合下面的 % 8</p>
+<p>正好 8 * 8 = 64， OK 很好</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/19.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+
+
+<p>结合代码中 i j = 0</p>
+<p>于是，左上角就是开始。</p>
+<p>根据题目设定的规则，不能走0，并且 对于 85 是 U，74 是 J，72 是H，75是K</p>
+<p>根据地图推断出 flag 的 字符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JJKKJJJJKKUUUKKJJJJK</span><br></pre></td></tr></table></figure>
+
+<p>这就是flag</p>
+<h1 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h1><h3 id="滴滴滴"><a href="#滴滴滴" class="headerlink" title="滴滴滴"></a>滴滴滴</h3><p>这道题，下载好附件后，发现是一个摩尔斯电码，解密得到flag</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/20.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h3 id="每逢佳节"><a href="#每逢佳节" class="headerlink" title="每逢佳节"></a>每逢佳节</h3><p>这hint就是一个字符串，观察特点，大小写，等号，这与base64相符，用base64试一试，然后就得到flag了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;the_flag_of_this_string&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Bacon"><a href="#Bacon" class="headerlink" title="Bacon"></a>Bacon</h3><p>打开后发现 只有3个汉字组成的字符串，根据题目意思，这应该是一个古典加密中的培根加密，众所周知，培根加密是只有AB 的，那么我就尝试着把它们替换为A B</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/21.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>将其用培根解密后的到flag</p>
+<p>flag{good}</p>
+<h3 id="古典变奏"><a href="#古典变奏" class="headerlink" title="古典变奏"></a>古典变奏</h3><p>这道题是一个图片，图片上是一个猪圈密码，用猪圈解密后还是一段字符，想着题目中给的提示，应该还需要凯撒和栅栏，看到六楼，想到凯撒的位移量可能是6，于是尝试，之后就穷举栅栏，2-n,最后得到，n是8.解得flag。</p>
+<h3 id="affine"><a href="#affine" class="headerlink" title="affine"></a>affine</h3><p>这道题考察了简单的 py应用，代码已经给出来加密解密过程，我们只需要把解密过程重新写成一个解密py文件执行即可</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/22.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>运行拿到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">henu&#123;this_is_a_very_basic_encryption&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="affine-revenge"><a href="#affine-revenge" class="headerlink" title="affine-revenge"></a>affine-revenge</h3><p>这次代码没给，a b m</p>
+<p>那么，就让我来好好分析一下把，首先，给一个 m 是 52</p>
+<p>a 和 b都小于 52 并且 a和 52 互素</p>
+<p>那么我们可以先穷举 a：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 5 7 9 11 15 17 19 21 23 25 27 29 31 33 35 37 41 43 45 47 49 51</span><br></pre></td></tr></table></figure>
+
+<p>那么好了，接下来就是穷举 b 了，由于 b 是 1 到 51</p>
+<p>我们写一个循环让其跑，最后查到flag 即可。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/23.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h3 id="Random-encrypt"><a href="#Random-encrypt" class="headerlink" title="Random_encrypt"></a>Random_encrypt</h3><p>这道题，主要就是考察对base64 base32 和 base16 的理解</p>
+<p>众所周知，base64 是大小写都有，外加 +/=</p>
+<p>​                    base32 只有大写，数字0-7，=</p>
+<p>​                base16 只有大写，和数字</p>
+<p>所以一切就简单了。</p>
+<p>只需要根据每次解密出来字符串的特点，便可以看出来何种加密方式。</p>
+<p>通过10次解密得到flag</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/24.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h3 id="easy-RSA"><a href="#easy-RSA" class="headerlink" title="easy-RSA"></a>easy-RSA</h3><p>这道题是简单的RSA 算法</p>
+<p>详细的RSA 过程我在这里就不谈了，这道RSA主要就是通过 c 求 d.</p>
+<p>题目已知 P*Q 和 p+q </p>
+<p>我们就可以得到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">N = (p-1)*(q-1) = p*q - (p+q) + 1</span><br></pre></td></tr></table></figure>
+
+<p>再通过N和C 的到 d</p>
+<p>通过d 和 密文 通过mol P*q得到 明文</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/25.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>从而得到flag</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/26.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h1 id="web"><a href="#web" class="headerlink" title="web"></a>web</h1><h3 id="白给-amp-签到"><a href="#白给-amp-签到" class="headerlink" title="白给&amp;签到"></a>白给&amp;签到</h3><p>打开直接给flag</p>
+<h3 id="Welcome"><a href="#Welcome" class="headerlink" title="Welcome"></a>Welcome</h3><p>打开网站后，按 ctrl + u 查看源码，直接给flag</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/27.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h3 id="Get"><a href="#Get" class="headerlink" title="Get"></a>Get</h3><p>这是一道通过get方式传参的题，我们需要的是给网站通过get方法传一个 henu=flag即可得到flag</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/28.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h3 id="Post"><a href="#Post" class="headerlink" title="Post"></a>Post</h3><p>这道题和上面的题类似，但是这道题是通过post传参，返回flag</p>
+<p>ps: post 和 get 区别我在这里就不多赘述了，主要是我也不是很透彻。</p>
+<p>百度谷歌一大堆。我在这里用的是 HackBar插件</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/29.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h3 id="easyphp-1"><a href="#easyphp-1" class="headerlink" title="easyphp_1"></a>easyphp_1</h3><p>这道题首先是PHP代码审计:</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/30.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>关键代码提示，用get方式输入一个 不是 s214587387a的字符串，但是 他的 md5值和 前面的字符串相等，这显然，肯定是有某种小技巧。因为md5加密很难有重复的，我这么一个菜鸡如何构造出来一个md5值一样，但是字符串不一样的字符串呢？</p>
+<p>就开始我的百度大法：</p>
+<p>找到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> PHP在处理哈希字符串时，会利用”!=”或”==”来对哈希值进行比较，它把每一个以”0E”开头的哈希值都解释为0，</span><br><span class="line">所以如果两个不同的密码经过哈希以后， 其哈希值都是以” 0E ”开头的，那么PHP将会认为他们相同，都是 0 。 </span><br></pre></td></tr></table></figure>
+
+<p>于是，我就随便copy一个用get方式传上去看看，</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/31.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>于是乎，成功的拿到了flag。</p>
+<p>当然类似的字符串还有很多</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">QNKCDZO</span><br><span class="line">s878926199a</span><br><span class="line">s155964671a</span><br><span class="line">s214587387a</span><br><span class="line">s878926199a</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/bestlzk/article/details/77994272">https://blog.csdn.net/bestlzk/article/details/77994272</a></p>
+<p>这个是链接。</p>
+<h3 id="easy-bypass"><a href="#easy-bypass" class="headerlink" title="easy_bypass"></a>easy_bypass</h3><p>看到源码，我陷入的沉思。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/40.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>这个过滤掉了字母和数字。</p>
+<p>我第一印象要构造一个奇怪的东西，进入文件。</p>
+<p>但是，真的想不到，各种百度都不行，都是不能过掉。正当我一筹莫展之时，看到底下已经把文件给出了，我就尝试着，把 filllagggggg.php文件打开。不看不知道，一看吓一跳啊，这里面真的能看到，有内容。一般这题，服务器都会拒绝外部请求的，所以文件包含漏洞一般都用内部间调用的方法去打开某个文件。显然，这道题不是这样。我本着开放的原则，简单的以为那一串字符是base32，但是，我又大意了，有 8 ，它也显然不是。我又陷入了沉思。突然，我想到16进制数，并尝试着看了字符串，发现，第一个字符都是数字，也就是说很可能就是16进制数。于是，解出来了一个真正的带等号的base编码。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/41.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>很容易看出来它是base64编码，于是，我就解密拿到flag。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/42.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h3 id="Autumn"><a href="#Autumn" class="headerlink" title="Autumn"></a>Autumn</h3><p>这道题，点进去之后，发现一个 机器人，和扫一扫。</p>
+<p>扫，想到用dirsearch去扫描端口</p>
+<p>机器人呢，想到 <strong>robots.txt</strong>这个文件</p>
+<p>做的挺多题都有这个。</p>
+<p>然后就直接搜索，果然，有那个配置文件。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/37.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>接下来，进入 提供的文件。</p>
+<p>然后就是 ctrl + u 看源码，在源码最后，发现了flag。</p>
+<h3 id="baby-unserialize"><a href="#baby-unserialize" class="headerlink" title="baby_unserialize"></a>baby_unserialize</h3><p>这道题是一个反序列化的题。</p>
+<p>首先进行代码审计。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/32.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>首先定义一个Henu的类</p>
+<p>里边只有一个protected类型的变量，类内定义了一些函数，用来初始化，销毁时执行。</p>
+<p>序列化时，这些函数不会被记录。</p>
+<p>但是，有一个函数值得注意，就是那个_wakeup()函数，这个函数在执行反序列化后，会被调用，也就让file强制变为index.php，显然，这不是我们想要的。我们就是要绕过它。</p>
+<p>这个是重点，就是修改序列化后变量的个数那个字符，只要它大于真实个数，就能绕过这个 wakeup（）；</p>
+<p>构造php文件</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/33.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>结果</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/34.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>将后面那个 base64加密的字符串传入。成功拿到flag。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/35.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/36.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h3 id="easy-Cookie"><a href="#easy-Cookie" class="headerlink" title="easy_Cookie"></a>easy_Cookie</h3><p>提示的很明显，这是一道关于 cookie的题。</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/38.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>打开cookie</p>
+<p>发现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cookie</span><br><span class="line">	henuctf=Wm14aFozdFVhR1ZmWTI5dmEybGxjMTlwYzE5a1pXeHBZMmx2ZFhOOQ%3D%3D</span><br></pre></td></tr></table></figure>
+
+<p>似乎是base64，尝试着解码。进行两次base64 的解码后出现flag</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/39.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<h3 id="全是假的"><a href="#全是假的" class="headerlink" title="全是假的"></a>全是假的</h3><p>这道题，我猜，我离成功只差一个 好的 burpsuite</p>
+<p>点开后，按F12 在head头中发现一个提示：/hint.php</p>
+<p>一向开放的我，这是变得内敛起来，心想，果然，道高一尺，魔高一丈。这玩意还能这样玩啊，</p>
+<p>索性打开hint.php，然后呢,就根据提示疯狂刷新，发现 flllagggg.php</p>
+
+    <figure class="figure-image">
+      <img src="/imgs/信安实验室新手wp.assets/43.png" alt="带描述带图片" loading="lazy" />
+      <figcaption>带描述带图片</figcaption>
+    </figure>
+  
+
+<p>之后，打开flllagggg.php</p>
+<p>提示，修改浏览器的标识。</p>
+<p>浏览器的标识是：user-agent：我修改后，说我的IP不对，</p>
+<p>然后又添加X-Forward-For为本地IP</p>
+<p>当然我做的时候，我不知道这道题有问题。等到管理员解决问题后，我的burpsuite就不能用了，哎挺可惜的。</p>
+<h1 id="pwn"><a href="#pwn" class="headerlink" title="pwn"></a>pwn</h1><h3 id="连上就给flag"><a href="#连上就给flag" class="headerlink" title="连上就给flag"></a>连上就给flag</h3><p>这个直接 nc 一下 然后 ls cat 就出来了</p>
+
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="/imgs/14.png"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2021/10/29/python%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E5%B8%B8%E8%A7%81%E7%B1%BB%E6%96%B9%E6%B3%95%EF%BC%8C%E4%BB%A5%E5%8F%8A%E7%AE%80%E5%8D%95%E7%9A%84%E7%BB%95%E8%BF%87/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">python模板注入常见类方法，以及简单的绕过</h2>
+        </a>
+      
+      <div class="card-text--row">下篇</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="/header.png" class="soft-size--round soft-style--box" alt="Shenyiming">
+    
+    
+      <h2>Shenyiming</h2>
+    
+    
+      <p>贵在坚持</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>13</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        5
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        10
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+
+      
+<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
+</svg>
+    <span>NOTICE</span>
+  </div>
+  <div class="widget-body">
+    <p>欢迎联系我QQ，详情在友链界面！！！</p>
+  </div>
+</section>
+
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+        <li class="categorys-list-item">
+          <a href="/categories/misc/">
+            misc (2)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/web%E5%AE%89%E5%85%A8/">
+            web安全 (5)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/writeup/">
+            writeup (1)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/Kali/">
+            Kali (1)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86/">
+            编码原理 (1)
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 20px;" class="tags-cloud-10">SQL注入</a> <a href="/tags/flask%E6%A8%A1%E6%9D%BF-%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/" style="font-size: 10px;" class="tags-cloud-0">flask模板-攻防世界</a> <a href="/tags/kali%E5%AE%89%E8%A3%85/" style="font-size: 10px;" class="tags-cloud-0">kali安装</a> <a href="/tags/misc-zip/" style="font-size: 10px;" class="tags-cloud-0">misc zip</a> <a href="/tags/misc%E9%9A%90%E5%86%99%E6%9C%AF/" style="font-size: 10px;" class="tags-cloud-0">misc隐写术</a> <a href="/tags/python%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E7%AE%80%E5%8D%95%E6%96%87%E6%A1%A3/" style="font-size: 10px;" class="tags-cloud-0">python模板注入简单文档</a> <a href="/tags/tornado%E6%A8%A1%E6%9D%BF-%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/" style="font-size: 10px;" class="tags-cloud-0">tornado模板-攻防世界</a> <a href="/tags/wp/" style="font-size: 10px;" class="tags-cloud-0">wp</a> <a href="/tags/%E5%BF%83%E5%BE%97/" style="font-size: 20px;" class="tags-cloud-10">心得</a> <a href="/tags/%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86/" style="font-size: 10px;" class="tags-cloud-0">编码原理</a>
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="https://itubo.github.io/" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+    </div>
+     
+    <p>&copy; 2021 <a href="/" target="_blank">shen</a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+<!-- dplayer -->
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>
