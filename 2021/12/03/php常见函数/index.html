@@ -24,7 +24,7 @@
 
   
 
-  <title>python模板注入常见类方法，以及简单的绕过 | Monstershen</title>
+  <title>php常见函数 | Monstershen</title>
 
   
 
@@ -47,7 +47,7 @@
 <!-- header container -->
 <header class="header-container post">
   
-    <div class="post-image" style="background-image: url(/imgs/14.png)"></div>
+    <div class="post-image" style="background-image: url(/imgs/17.png)"></div>
   
 
   <!-- navbar -->
@@ -98,11 +98,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">python模板注入常见类方法，以及简单的绕过</h1>
+          <h1 class="title-wrap">php常见函数</h1>
           <h2 class="title-sub-wrap">
             <strong>shen</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2021-10-29T12:01:41.000Z" itemprop="datePublished">2021-10-29</time>
+            <time  class="article-date" datetime="2021-12-03T07:59:53.000Z" itemprop="datePublished">2021-12-03</time>
           </h2>
           <ul class="wrap-list dark">
   
@@ -111,7 +111,7 @@
 </ul>
           <ul class="wrap-list dark">
   
-    <li><a href="/tags/python%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E7%AE%80%E5%8D%95%E6%96%87%E6%A1%A3/">🏷️ python模板注入简单文档</a></li>
+    <li><a href="/tags/php/">🏷️ php</a></li>
   
 </ul>
         </div>
@@ -135,20 +135,45 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <p>常见 类 以及 方法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">__class__            类的一个内置属性，表示实例对象的类。</span><br><span class="line">__base__             类型对象的直接基类</span><br><span class="line">__bases__            类型对象的全部基类，以元组形式，类型的实例通常没有属性 __bases__</span><br><span class="line">__mro__              此属性是由类组成的元组，在方法解析期间会基于它来查找基类。</span><br><span class="line">__subclasses__()     返回这个类的子类集合，Each <span class="class"><span class="keyword">class</span> <span class="title">keeps</span> <span class="title">a</span> <span class="title">list</span> <span class="title">of</span> <span class="title">weak</span> <span class="title">references</span> <span class="title">to</span> <span class="title">its</span> <span class="title">immediate</span> <span class="title">subclasses</span>. <span class="title">This</span> <span class="title">method</span> <span class="title">returns</span> <span class="title">a</span> <span class="title">list</span> <span class="title">of</span> <span class="title">all</span> <span class="title">those</span> <span class="title">references</span> <span class="title">still</span> <span class="title">alive</span>. <span class="title">The</span> <span class="title">list</span> <span class="title">is</span> <span class="title">in</span> <span class="title">definition</span> <span class="title">order</span>.</span></span><br><span class="line"><span class="class"><span class="title">__init__</span>             初始化类，返回的类型是<span class="title">function</span></span></span><br><span class="line"><span class="class"><span class="title">__globals__</span>          使用方式是 函数名.<span class="title">__globals__</span>获取<span class="title">function</span>所处空间下可使用的<span class="title">module</span>、方法以及所有变量。</span></span><br><span class="line"><span class="class"><span class="title">__dic__</span>              类的静态函数、类函数、普通函数、全局变量以及一些内置的属性都是放在类的<span class="title">__dict__</span>里</span></span><br><span class="line"><span class="class"><span class="title">__getattribute__</span>()   实例、类、函数都具有的<span class="title">__getattribute__</span>魔术方法。事实上，在实例化的对象进行.操作的时候（形如：<span class="title">a</span>.<span class="title">xxx</span>/<span class="title">a</span>.<span class="title">xxx</span>()），都会自动去调用<span class="title">__getattribute__</span>方法。因此我们同样可以直接通过这个方法来获取到实例、类、函数的属性。</span></span><br><span class="line"><span class="class"><span class="title">__getitem__</span>()        调用字典中的键值，其实就是调用这个魔术方法，比如<span class="title">a</span>[&#x27;<span class="title">b</span>&#x27;]，就是<span class="title">a</span>.<span class="title">__getitem__</span>(<span class="params"><span class="string">&#x27;b&#x27;</span></span>)</span></span><br><span class="line"><span class="class"><span class="title">__builtins__</span>         内建名称空间，内建名称空间有许多名字到对象之间映射，而这些名字其实就是内建函数的名称，对象就是这些内建函数本身。即里面有很多常用的函数。<span class="title">__builtins__</span>与<span class="title">__builtin__</span>的区别就不放了，百度都有。</span></span><br><span class="line"><span class="class"><span class="title">__import__</span>           动态加载类和函数，也就是导入模块，经常用于导入<span class="title">os</span>模块，<span class="title">__import__</span>(<span class="params"><span class="string">&#x27;os&#x27;</span></span>).<span class="title">popen</span>(<span class="params"><span class="string">&#x27;ls&#x27;</span></span>).<span class="title">read</span>()]</span></span><br><span class="line"><span class="class"><span class="title">__str__</span>()            返回描写这个对象的字符串，可以理解成就是打印出来。</span></span><br><span class="line"><span class="class"><span class="title">url_for</span>              <span class="title">flask</span>的一个方法，可以用于得到<span class="title">__builtins__</span>，而且<span class="title">url_for</span>.<span class="title">__globals__</span>[&#x27;<span class="title">__builtins__</span>&#x27;]含有<span class="title">current_app</span>。</span></span><br><span class="line"><span class="class"><span class="title">get_flashed_messages</span> <span class="title">flask</span>的一个方法，可以用于得到<span class="title">__builtins__</span>，而且<span class="title">url_for</span>.<span class="title">__globals__</span>[&#x27;<span class="title">__builtins__</span>&#x27;]含有<span class="title">current_app</span>。</span></span><br><span class="line"><span class="class"><span class="title">lipsum</span>               <span class="title">flask</span>的一个方法，可以用于得到<span class="title">__builtins__</span>，而且<span class="title">lipsum</span>.<span class="title">__globals__</span>含有<span class="title">os</span>模块：&#123;&#123;<span class="title">lipsum</span>.<span class="title">__globals__</span>[&#x27;<span class="title">os</span>&#x27;].<span class="title">popen</span>(<span class="params"><span class="string">&#x27;ls&#x27;</span></span>).<span class="title">read</span>()&#125;&#125;</span></span><br><span class="line"><span class="class"><span class="title">current_app</span>          应用上下文，一个全局变量。</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">request</span>              可以用于获取字符串来绕过，包括下面这些，引用一下羽师傅的。此外，同样可以获取<span class="title">open</span>函数:</span>request.__init__.__globals__[<span class="string">&#x27;__builtins__&#x27;</span>].<span class="built_in">open</span>(<span class="string">&#x27;/proc\self\fd/3&#x27;</span>).read()</span><br><span class="line">request.args.x1   	 get传参</span><br><span class="line">request.values.x1 	 所有参数</span><br><span class="line">request.cookies      cookies参数</span><br><span class="line">request.headers      请求头参数</span><br><span class="line">request.form.x1   	 post传参	(Content-<span class="type">Type</span>:applicaation/x-www-form-urlencoded或multipart/form-data)</span><br><span class="line">request.data  		 post传参	(Content-<span class="type">Type</span>:a/b)</span><br><span class="line">request.json		 post传json  (Content-<span class="type">Type</span>: application/json)</span><br><span class="line">config               当前application的所有配置。此外，也可以这样&#123;&#123; config.__class__.__init__.__globals__[<span class="string">&#x27;os&#x27;</span>].popen(<span class="string">&#x27;ls&#x27;</span>).read() &#125;&#125;</span><br><span class="line">g                    &#123;&#123;g&#125;&#125;得到&lt;flask.g of <span class="string">&#x27;flask_ssti&#x27;</span>&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h1 id="php常见函数总结"><a href="#php常见函数总结" class="headerlink" title="php常见函数总结"></a>php常见函数总结</h1><h2 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h2><h3 id="chr"><a href="#chr" class="headerlink" title="chr()"></a>chr()</h3><p>返回 ascll 对应的字符</p>
+<h3 id="ord"><a href="#ord" class="headerlink" title="ord()"></a>ord()</h3><p>返回字符的 ascll 值</p>
+<h3 id="strpos"><a href="#strpos" class="headerlink" title="strpos()"></a>strpos()</h3><p>在字符串内查找一个字符或一段指定的文本，如果在字符串中找到，就会返回第一个找到的位置。如果未找到则返回 false。</p>
+<h3 id="stripos"><a href="#stripos" class="headerlink" title="stripos()"></a>stripos()</h3><p>这个函数和 strpos（），类似，唯一一点不同是，这个函数不区分大小写。</p>
+<h3 id="strrpos"><a href="#strrpos" class="headerlink" title="strrpos()"></a>strrpos()</h3><p>这个函数和 strpos（）,类似，不同点是，这个函数返回最后一次出现位置。</p>
+<h3 id="strripos"><a href="#strripos" class="headerlink" title="strripos()"></a>strripos()</h3><p>不区分大小写，其他同上。</p>
+<h3 id="strlen"><a href="#strlen" class="headerlink" title="strlen()"></a>strlen()</h3><p>返回字符串的长度</p>
+<h3 id="substr"><a href="#substr" class="headerlink" title="substr()"></a>substr()</h3><p>返回字符串的一部分（ps:在 UTF-8编码下截取汉字会乱码）</p>
+<h3 id="str-replace"><a href="#str-replace" class="headerlink" title="str_replace()"></a>str_replace()</h3><p>用指定字符串代替目标字符串中特定或某些字符串，返回新字符串。</p>
+<h3 id="strtr"><a href="#strtr" class="headerlink" title="strtr()"></a>strtr()</h3><p>详情请看：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/html55/p/10777070.html">https://www.cnblogs.com/html55/p/10777070.html</a></p>
+<h3 id="eregi"><a href="#eregi" class="headerlink" title="eregi()"></a>eregi()</h3><p>在一个字符串搜索指定模式的字符串，搜索不区分大小写。</p>
+<h3 id="strcmp"><a href="#strcmp" class="headerlink" title="strcmp()"></a>strcmp()</h3><p>比较两个字符串（二进制安全）</p>
+<h3 id="preg-match"><a href="#preg-match" class="headerlink" title="preg_match()"></a>preg_match()</h3><p>用于执行一个正则表达式匹配。匹配第一个后便停止。返回匹配次数（0 或 1）。 如果发生错误preg_match()返回 FALSE。</p>
+<h3 id="preg-match-all"><a href="#preg-match-all" class="headerlink" title="preg_match_all()"></a>preg_match_all()</h3><p>不同于此，它会一直搜索subject 直到到达结尾。</p>
+<h2 id="数据类"><a href="#数据类" class="headerlink" title="数据类"></a>数据类</h2><h3 id="is-numeric"><a href="#is-numeric" class="headerlink" title="is_numeric()"></a>is_numeric()</h3><p>该函数用于检测变量是否为数字或者数字字符串，如果制定的变量是数字数字字符串则返回 true 否则返回 false ，如果传入浮点型，则返回空，即 false。</p>
+<h3 id="var-dump"><a href="#var-dump" class="headerlink" title="var_dump()"></a>var_dump()</h3><p>返回数据变量的类型和值</p>
+<h3 id="isset"><a href="#isset" class="headerlink" title="isset()"></a>isset()</h3><p>检测检测变量是否存在，不存在返回 false</p>
+<h3 id="serialize"><a href="#serialize" class="headerlink" title="serialize()"></a>serialize()</h3><p>将一个对象转换成一个字符串。</p>
+<h3 id="unserialize（）"><a href="#unserialize（）" class="headerlink" title="unserialize（）"></a>unserialize（）</h3><p>将一个字符串转换成一个对象。</p>
+<h2 id="命令执行类"><a href="#命令执行类" class="headerlink" title="命令执行类"></a>命令执行类</h2><h3 id="eval"><a href="#eval" class="headerlink" title="eval()"></a>eval()</h3><p>把输入字符串当做 php 代码执行。一般用于做命令执行漏洞，和文件上传漏洞。</p>
+<h2 id="文件类"><a href="#文件类" class="headerlink" title="文件类"></a>文件类</h2><h3 id="highlight-file"><a href="#highlight-file" class="headerlink" title="highlight_file()"></a>highlight_file()</h3><p>对文件进行 PHP 语法高亮显示。第二个可选参数若为 true 则以<strong>字符串</strong>形式返回高亮显示代码。</p>
+<h3 id="file-get-contents"><a href="#file-get-contents" class="headerlink" title="file_get_contents()"></a>file_get_contents()</h3><p><strong>支持php伪协议</strong></p>
+<p>将文件读入一个字符串中</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="call-user-func"><a href="#call-user-func" class="headerlink" title="call_user_func"></a>call_user_func</h3><p>将第一个参数作为回调函数调用</p>
+<h3 id="preg-replace-callback"><a href="#preg-replace-callback" class="headerlink" title="preg_replace_callback()"></a>preg_replace_callback()</h3><p>每匹配一次，调用一下回调函数</p>
+<h2 id="系统函数"><a href="#系统函数" class="headerlink" title="系统函数"></a>系统函数</h2><h3 id="exce"><a href="#exce" class="headerlink" title="exce()"></a>exce()</h3><p>不输出结果，返回最后一行 shell 的结果，所有结果可以保存到一个返回的数组中</p>
+<h3 id="system"><a href="#system" class="headerlink" title="system()"></a>system()</h3><p>输出并返回最后一行 shell 结果</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">可以用这个特点，在非 root 用户 的情况下，提权</span><br><span class="line">sudo php -r <span class="string">&#x27;system(&quot;/bin/bash&quot;);&#x27;</span></span><br><span class="line">    <span class="comment">//用 /bin/bash 创建一个系统对话框。</span></span><br></pre></td></tr></table></figure>
 
-<p>过滤器：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>()：将值转换为<span class="keyword">int</span>类型；</span><br><span class="line"></span><br><span class="line"><span class="keyword">float</span>()：将值转换为<span class="keyword">float</span>类型；</span><br><span class="line"></span><br><span class="line">lower()：将字符串转换为小写；</span><br><span class="line"></span><br><span class="line">upper()：将字符串转换为大写；</span><br><span class="line"></span><br><span class="line">title()：把值中的每个单词的首字母都转成大写；</span><br><span class="line"></span><br><span class="line">capitalize()：把变量值的首字母转成大写，其余字母转小写；</span><br><span class="line"></span><br><span class="line">trim()：截取字符串前面和后面的空白字符；</span><br><span class="line"></span><br><span class="line">wordcount()：计算一个长字符串中单词的个数；</span><br><span class="line"></span><br><span class="line">reverse()：字符串反转；</span><br><span class="line"></span><br><span class="line">replace(value,old,<span class="keyword">new</span>)： 替换将old替换为<span class="keyword">new</span>的字符串；</span><br><span class="line"></span><br><span class="line">truncate(value,length=<span class="number">255</span>,killwords=<span class="literal">False</span>)：截取length长度的字符串；</span><br><span class="line"></span><br><span class="line">striptags()：删除字符串中所有的HTML标签，如果出现多个空格，将替换成一个空格；</span><br><span class="line"></span><br><span class="line">escape()或e：转义字符，会将&lt;、&gt;等符号转义成HTML中的符号。显例：content|escape或content|e。</span><br><span class="line"></span><br><span class="line">safe()： 禁用HTML转义，如果开启了全局转义，那么safe过滤器会将变量关掉转义。示例： &#123;&#123;<span class="string">&#x27;&lt;em&gt;hello&lt;/em&gt;&#x27;</span>|safe&#125;&#125;；</span><br><span class="line"></span><br><span class="line"><span class="keyword">list</span>()：将变量列成列表；</span><br><span class="line"></span><br><span class="line"><span class="keyword">string</span>()：将变量转换成字符串；</span><br><span class="line"></span><br><span class="line">join()：将一个序列中的参数值拼接成字符串。示例看上面payload；</span><br><span class="line"></span><br><span class="line">abs()：返回一个数值的绝对值；</span><br><span class="line"></span><br><span class="line">first()：返回一个序列的第一个元素；</span><br><span class="line"></span><br><span class="line">last()：返回一个序列的最后一个元素；</span><br><span class="line"></span><br><span class="line">format(value,arags,*kwargs)：格式化字符串。比如：&#123;&#123; <span class="string">&quot;%s&quot;</span> - <span class="string">&quot;%s&quot;</span>|format(<span class="string">&#x27;Hello?&#x27;</span>,<span class="string">&quot;Foo!&quot;</span>) &#125;&#125;将输出：Helloo? - Foo!</span><br><span class="line"></span><br><span class="line">length()：返回一个序列或者字典的长度；</span><br><span class="line"></span><br><span class="line">sum()：返回列表内数值的和；</span><br><span class="line"></span><br><span class="line">sort()：返回排序后的列表；</span><br><span class="line"></span><br><span class="line"><span class="keyword">default</span>(value,default_value,<span class="keyword">boolean</span>=<span class="literal">false</span>)：如果当前变量没有值，则会使用参数中的值来代替。示例：name|<span class="keyword">default</span>(<span class="string">&#x27;xiaotuo&#x27;</span>)----如果name不存在，则会使用xiaotuo来替代。<span class="keyword">boolean</span>=<span class="literal">False</span>默认是在只有这个变量为undefined的时候才会使用<span class="keyword">default</span>中的值，如果想使用python的形式判断是否为<span class="literal">false</span>，则可以传递<span class="keyword">boolean</span>=<span class="literal">true</span>。也可以使用<span class="keyword">or</span>来替换。</span><br><span class="line"></span><br><span class="line">length()返回字符串的长度，别名是count</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>原文链接：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45834505/article/details/116839614">常见过滤方法</a></p>
+<h3 id="passthru"><a href="#passthru" class="headerlink" title="passthru()"></a>passthru()</h3><p>只调用命令，把命令的运行结果原样地直接输出到标准输出设备上</p>
+<p>欢迎交流！</p>
 
       </section>
 
       
       
         <nav class="article-nav">
+          
           
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
@@ -159,23 +184,6 @@
       
         <a href="/2021/11/16/%E4%BF%A1%E5%AE%89%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%96%B0%E6%89%8Bwp/" itemprop="url">
           <h2 class="card-text--title text-ellipsis">信安实验室新手wp</h2>
-        </a>
-      
-      <div class="card-text--row">上篇</div>
-    </div>
-  </article>
-</div>
-          
-          
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
-    
-      <div class="card-cover" background-image-lazy data-img="/imgs/10.png"></div>
-    
-    <div class="card-text">
-      
-        <a href="/2021/10/29/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB-shrine/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">攻防世界WEB-shrine</h2>
         </a>
       
       <div class="card-text--row">下篇</div>
