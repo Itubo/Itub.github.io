@@ -24,7 +24,7 @@
 
   
 
-  <title>Hello World | Monstershen</title>
+  <title>关于prep_match绕过的三种方法 | Monstershen</title>
 
   
 
@@ -47,7 +47,7 @@
 <!-- header container -->
 <header class="header-container post">
   
-    <div class="post-image" style="background-image: url(/11.png)"></div>
+    <div class="post-image" style="background-image: url(/imgs/11.png)"></div>
   
 
   <!-- navbar -->
@@ -98,16 +98,20 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">Hello World</h1>
+          <h1 class="title-wrap">关于prep_match绕过的三种方法</h1>
           <h2 class="title-sub-wrap">
             <strong>shen</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2021-09-12T14:15:20.702Z" itemprop="datePublished">2021-09-12</time>
+            <time  class="article-date" datetime="2022-01-10T05:02:35.000Z" itemprop="datePublished">2022-01-10</time>
           </h2>
           <ul class="wrap-list dark">
   
+    <li><a href="/categories/web%E5%AE%89%E5%85%A8/">📒 web安全</a></li>
+  
 </ul>
           <ul class="wrap-list dark">
+  
+    <li><a href="/tags/php%E5%AE%89%E5%85%A8/">🏷️ php安全</a></li>
   
 </ul>
         </div>
@@ -131,19 +135,26 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <h1 id="绕过-prep-match-的方法"><a href="#绕过-prep-match-的方法" class="headerlink" title="绕过 prep_match 的方法"></a>绕过 prep_match 的方法</h1><ol>
+<li><p>利用<strong>数组</strong>绕过</p>
+<p>prep_match 只能处理字符串，当传入的参数是数组时，会返回 false</p>
+</li>
+<li><p>利用<strong>正则回溯</strong>次数限制绕过</p>
+<p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/use-pcre-backtrack-limit-to-bypass-restrict.html">PHP利用PCRE回溯次数限制绕过某些安全限制 | 离别歌 (leavesongs.com)</a></p>
+<p>这里先放上一篇不错的文章</p>
+<p>PCRE中为了防止正则回溯次数过大（会造成正则表达式的拒绝服务攻击（reDOS））从而设置的一个回溯最大次数限制，这个限制 是 100万，换句话说，当匹配次数超过 100万时，perp_match就会返回 false。</p>
+</li>
+<li><p>利用<strong>换行符</strong>来绕过prep_match</p>
+</li>
+</ol>
+<p>​        . 不会匹配换行符</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (preg_match(<span class="string">&#x27;/^.*(flag).*$/&#x27;</span>, <span class="variable">$json</span>)) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;Hacking attempt detected&lt;br/&gt;&lt;br/&gt;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//构造 $json=&quot;\nflag&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>​        prep_match 匹配字符串的结尾，$ 会忽略 换行符、</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (preg_match(<span class="string">&#x27;/^flag$/&#x27;</span>, <span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>]) &amp;&amp; <span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>] !== <span class="string">&#x27;flag&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//构造 ?a=flag%0a</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
       </section>
 
@@ -154,10 +165,12 @@
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
+      <div class="card-cover" background-image-lazy data-img="/imgs/16.png"></div>
+    
     <div class="card-text">
       
-        <a href="/2021/09/12/my-first-blog/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">my first blog</h2>
+        <a href="/2022/01/10/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%80%E5%8D%95%E5%BD%92%E7%BA%B3/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">正则表达式简单归纳</h2>
         </a>
       
       <div class="card-text--row">上篇</div>
@@ -165,6 +178,22 @@
   </article>
 </div>
           
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="/imgs/17.png"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2021/12/03/php%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">php常见函数</h2>
+        </a>
+      
+      <div class="card-text--row">下篇</div>
+    </div>
+  </article>
+</div>
           
         </nav>
       
