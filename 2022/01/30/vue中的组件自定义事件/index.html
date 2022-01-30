@@ -24,7 +24,7 @@
 
   
 
-  <title>vue复习1-基础语法与数据代理 | Monstershen</title>
+  <title>vue中的组件自定义事件 | Monstershen</title>
 
   
 
@@ -47,7 +47,7 @@
 <!-- header container -->
 <header class="header-container post">
   
-    <div class="post-image" style="background-image: url(/imgs/10.png)"></div>
+    <div class="post-image" style="background-image: url(/imgs/5.png)"></div>
   
 
   <!-- navbar -->
@@ -98,11 +98,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">vue复习1-基础语法与数据代理</h1>
+          <h1 class="title-wrap">vue中的组件自定义事件</h1>
           <h2 class="title-sub-wrap">
             <strong>shen</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2022-01-24T16:05:17.000Z" itemprop="datePublished">2022-01-25</time>
+            <time  class="article-date" datetime="2022-01-30T15:29:42.000Z" itemprop="datePublished">2022-01-30</time>
           </h2>
           <ul class="wrap-list dark">
   
@@ -111,7 +111,7 @@
 </ul>
           <ul class="wrap-list dark">
   
-    <li><a href="/tags/vue%E7%9F%A5%E8%AF%86%E7%82%B9/">🏷️ vue知识点</a></li>
+    <li><a href="/tags/vue%E7%BB%84%E4%BB%B6%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/">🏷️ vue组件自定义事件</a></li>
   
 </ul>
         </div>
@@ -135,41 +135,50 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h1 id="VUE复习1"><a href="#VUE复习1" class="headerlink" title="VUE复习1"></a>VUE复习1</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../js/vue.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;root&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><br>            <span class="hljs-comment">&lt;!-- 花括号中可以写 js表达式和js代码 --&gt;</span><br>            &#123;&#123;message&#125;&#125;<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript">        Vue.config.productionTip = <span class="hljs-literal">false</span>;</span><br><span class="javascript">        <span class="hljs-comment">// 阻止 vue 在启动时生成生产提示</span></span><br><span class="javascript"></span><br><span class="javascript">        <span class="hljs-comment">// 创建vue 实例：</span></span><br><span class="javascript">        <span class="hljs-keyword">const</span> x = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="javascript">            <span class="hljs-comment">// el: &quot;#root&quot;,// el 第一种写法  </span></span><br><span class="javascript">            <span class="hljs-attr">data</span>: &#123; <span class="hljs-comment">//data 第一种写法，对象式</span></span><br><span class="javascript">                <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;hello world&quot;</span>,</span><br><span class="javascript">            &#125;</span><br><span class="javascript">        &#125;)</span><br><span class="javascript">        x.$mount(<span class="hljs-string">&quot;#root&quot;</span>) <span class="hljs-comment">// el 第二种写法 ，挂载</span></span><br><span class="javascript">        <span class="hljs-comment">// vue 指令有两种格式：插值语法 &#123;&#123;&#125;&#125;</span></span><br><span class="javascript">        <span class="hljs-comment">//                    指令语法  通过 v-bind 去绑定  语法糖是： :</span></span><br><span class="javascript"></span><br><span class="javascript">        <span class="hljs-comment">//  data 中可以套娃写，也就是 可以写对象，通过 . 调用</span></span><br><span class="javascript"></span><br><span class="javascript">        <span class="hljs-comment">// v-model  双向数据绑定，v-bind  单项数据绑定</span></span><br><span class="javascript">        <span class="hljs-comment">// v-model 只能用在 表单元素上，有个 value（捕获输入） 可以与变量进行数据绑定</span></span><br><span class="javascript">        <span class="hljs-comment">// v-model 默认收集 value值，也就是 在 input 中  可以直接 v-model=&quot;变量名&quot;</span></span><br><span class="javascript"></span><br><span class="javascript"></span><br><span class="javascript">        <span class="hljs-comment">// const y = new Vue(&#123;</span></span><br><span class="javascript">        <span class="hljs-comment">//     el: &quot;#root&quot;,</span></span><br><span class="javascript">        <span class="hljs-comment">//     data() &#123;</span></span><br><span class="javascript">        <span class="hljs-comment">//         return &#123;</span></span><br><span class="javascript">        <span class="hljs-comment">//             name: &quot;申祎明&quot;,  这是 data第二种写法，函数式  后面要用这种方法，要不然会报错</span></span><br><span class="javascript">        <span class="hljs-comment">//         &#125;</span></span><br><span class="javascript">        <span class="hljs-comment">//     &#125;,</span></span><br><span class="javascript">        <span class="hljs-comment">// &#125;)</span></span><br><span class="javascript"></span><br><span class="javascript">        <span class="hljs-comment">//有时候咱们看见属性的值在 vue对象中 用 ... 代替，原因就是 在于动态绑定。</span></span><br><span class="javascript">        <span class="hljs-comment">// 有一个方法 Object.defineProperty(obj,新属性名,&#123;配置&#125;)</span></span><br><span class="javascript">        <span class="hljs-keyword">let</span> people = &#123;</span><br><span class="javascript">            <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;申祎明&quot;</span>,</span><br><span class="javascript">            <span class="hljs-attr">sex</span>: <span class="hljs-string">&quot;男&quot;</span>,</span><br><span class="javascript">        &#125;</span><br><span class="javascript">        <span class="hljs-built_in">console</span>.log(people);</span><br><span class="javascript">        <span class="hljs-keyword">let</span> num = <span class="hljs-number">19</span>;</span><br><span class="javascript">        <span class="hljs-built_in">Object</span>.defineProperty(people, <span class="hljs-string">&quot;age&quot;</span>, &#123;</span><br><span class="javascript">            <span class="hljs-comment">// value: 18,</span></span><br><span class="javascript">            <span class="hljs-comment">// enumerable: true,//控制属性是否可以枚举，默认为 false</span></span><br><span class="javascript">            <span class="hljs-comment">// writable: true, // 控制属性是否可以被修改</span></span><br><span class="javascript">            <span class="hljs-comment">// configurable: true, // 控制属性是否可以被删除</span></span><br><span class="javascript">            <span class="hljs-comment">// 利用get动态添加数据</span></span><br><span class="javascript">            <span class="hljs-comment">// getter</span></span><br><span class="javascript">            <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params"></span>)</span> &#123;</span><br><span class="javascript">                <span class="hljs-keyword">return</span> num;</span><br><span class="javascript">            &#125;,</span><br><span class="javascript">            <span class="hljs-comment">//修改 age 时，会调用 set ，并且值传给 vulue</span></span><br><span class="javascript">            <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">value</span>)</span> &#123;</span><br><span class="javascript">                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;age被改掉了&quot;</span> + value);</span><br><span class="javascript">                num = value;</span><br><span class="javascript">            &#125;</span><br><span class="javascript">        &#125;)</span><br><span class="javascript">        <span class="hljs-built_in">console</span>.log(people);</span><br><span class="javascript"></span><br><span class="javascript"></span><br><span class="javascript">        <span class="hljs-comment">// 再谈原理：</span></span><br><span class="javascript">        <span class="hljs-comment">// const VM = new Vue(&#123;</span></span><br><span class="javascript">        <span class="hljs-comment">//     el: ...,</span></span><br><span class="javascript">        <span class="hljs-comment">//     data: &#123;</span></span><br><span class="javascript">        <span class="hljs-comment">//         ..,</span></span><br><span class="javascript">        <span class="hljs-comment">//     &#125;</span></span><br><span class="javascript">        <span class="hljs-comment">// &#125;)</span></span><br><span class="javascript">        <span class="hljs-comment">// 上面一段代码，将vue 的一个实例化对象赋给 vm 其实，vm中有一个_data属性 保存了data中的所有值，</span></span><br><span class="javascript">        <span class="hljs-comment">// 我们可以通过 _data.的方式去访问，但是 为了编码方便，vue又做了一个事</span></span><br><span class="javascript">        <span class="hljs-comment">// 数据代理，通过 Object.defineProperty()的接口,利用 getter 和 setter 的方法,、</span></span><br><span class="javascript">        <span class="hljs-comment">// 往vm中新添加 data对象中所有的属性。</span></span><br><span class="javascript">        <span class="hljs-comment">//     举个例子</span></span><br><span class="javascript">        <span class="hljs-comment">// 通过 obj2 代理 obj1      </span></span><br><span class="javascript"></span><br><span class="javascript">        <span class="hljs-keyword">let</span> obj1 = &#123; <span class="hljs-attr">x</span>: <span class="hljs-number">100</span> &#125;;</span><br><span class="javascript">        <span class="hljs-keyword">let</span> obj2 = &#123; <span class="hljs-attr">y</span>: <span class="hljs-number">200</span> &#125;;</span><br><span class="javascript"></span><br><span class="javascript">        <span class="hljs-built_in">Object</span>.defineProperty(obj2, <span class="hljs-string">&quot;x&quot;</span>, &#123;</span><br><span class="javascript">            <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params"></span>)</span> &#123;</span><br><span class="javascript">                <span class="hljs-keyword">return</span> obj.x;</span><br><span class="javascript">            &#125;,</span><br><span class="javascript"></span><br><span class="javascript">            <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">v</span>)</span> &#123;</span><br><span class="javascript">                obj1.x = v;</span><br><span class="javascript">            &#125;</span><br><span class="javascript">        &#125;)</span><br><span class="javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-
+        <h1 id="组件的自定义事件"><a href="#组件的自定义事件" class="headerlink" title="组件的自定义事件"></a>组件的自定义事件</h1><blockquote>
+<p>组件的自定义事件</p>
+</blockquote>
+<ol>
+<li><p>一种组件间通信的方式，适用于： 子组件 ===&gt; 父组件</p>
+</li>
+<li><p>使用场景：A是父组件，B是子组件，B想给A传数据，那么就要在A中给B绑定自定义事件（<strong>事件的回调是留在A中的</strong>）。也就是，回调得在父亲中</p>
+</li>
+<li><p>绑定自定义事件：</p>
+<ol>
+<li><p>第一种方法，在父组件中：<code>&lt;Demo @shen=&quot;test&quot;/&gt;  </code> 或 <code>&lt;Demo v-on:shen=&quot;test&quot;/&gt;</code></p>
+</li>
+<li><p>第二种方法，在父组件中：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;Demo ref=<span class="hljs-string">&quot;demo&quot;</span>/&gt;<br>    <br> ...<br><span class="hljs-function"><span class="hljs-title">mounted</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.$refs.Demo.$on(<span class="hljs-string">&#x27;shen&#x27;</span>,<span class="hljs-built_in">this</span>.test)<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>若想让自定义事件只触发一次，可以用 once 修饰符，或<code>$once</code>方法（将$on 改为 $once）</p>
+</li>
+</ol>
+</li>
+<li><p>触发自定义事件：<code>this.$emit(&#39;shen&#39;,数据)</code></p>
+</li>
+<li><p>解绑自定义事件：<code>this.$off(&#39;shen&#39;)</code></p>
+</li>
+<li><p>组件上也可以绑定原生 DOM 事件，需要使用 <code>native</code> 修饰符</p>
+</li>
+<li><p>注意： 通过 <code>this.$refs.xxx.$on(&#39;shen&#39;,回调)</code>绑定自定义事件时，回调 要么配置在 methods 中，要么用 箭头函数（就是把函数定义直接写回调里边），否则 this 指向会出问题。</p>
+</li>
+</ol>
+<h3 id="在不同组件通信中，有一个-事件全局总线，就是用上面的原理，通过在Vue实例（vm）中放函数，然后再通过-emit-去调用，触发事件，还能携带参数，实现不同组件间数据传递。"><a href="#在不同组件通信中，有一个-事件全局总线，就是用上面的原理，通过在Vue实例（vm）中放函数，然后再通过-emit-去调用，触发事件，还能携带参数，实现不同组件间数据传递。" class="headerlink" title="在不同组件通信中，有一个 事件全局总线，就是用上面的原理，通过在Vue实例（vm）中放函数，然后再通过$emit()去调用，触发事件，还能携带参数，实现不同组件间数据传递。"></a>在不同组件通信中，有一个 事件全局总线，就是用上面的原理，通过在Vue实例（vm）中放函数，然后再通过$emit()去调用，触发事件，还能携带参数，实现不同组件间数据传递。</h3>
       </section>
 
       
       
         <nav class="article-nav">
           
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
-    
-      <div class="card-cover" background-image-lazy data-img="/imgs/5.png"></div>
-    
-    <div class="card-text">
-      
-        <a href="/2022/01/30/vue%E4%B8%AD%E7%9A%84%E7%BB%84%E4%BB%B6%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">vue中的组件自定义事件</h2>
-        </a>
-      
-      <div class="card-text--row">上篇</div>
-    </div>
-  </article>
-</div>
-          
           
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
-      <div class="card-cover" background-image-lazy data-img="/imgs/13.png"></div>
+      <div class="card-cover" background-image-lazy data-img="/imgs/10.png"></div>
     
     <div class="card-text">
       
-        <a href="/2022/01/19/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">服务器</h2>
+        <a href="/2022/01/25/vue%E5%A4%8D%E4%B9%A01-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">vue复习1-基础语法与数据代理</h2>
         </a>
       
       <div class="card-text--row">下篇</div>
