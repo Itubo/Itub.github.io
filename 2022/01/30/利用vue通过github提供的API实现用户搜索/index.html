@@ -24,7 +24,7 @@
 
   
 
-  <title>服务器 | Monstershen</title>
+  <title>利用vue通过github提供的API实现用户搜索 | Monstershen</title>
 
   
 
@@ -47,7 +47,7 @@
 <!-- header container -->
 <header class="header-container post">
   
-    <div class="post-image" style="background-image: url(/imgs/13.png)"></div>
+    <div class="post-image" style="background-image: url(/imgs/3.png)"></div>
   
 
   <!-- navbar -->
@@ -98,20 +98,20 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">服务器</h1>
+          <h1 class="title-wrap">利用vue通过github提供的API实现用户搜索</h1>
           <h2 class="title-sub-wrap">
             <strong>shen</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2022-01-19T12:56:42.000Z" itemprop="datePublished">2022-01-19</time>
+            <time  class="article-date" datetime="2022-01-30T15:50:53.000Z" itemprop="datePublished">2022-01-30</time>
           </h2>
           <ul class="wrap-list dark">
   
-    <li><a href="/categories/web%E5%AE%89%E5%85%A8/">📒 web安全</a></li>
+    <li><a href="/categories/vue/">📒 vue</a></li>
   
 </ul>
           <ul class="wrap-list dark">
   
-    <li><a href="/tags/web%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%BA%E7%A1%80/">🏷️ web服务器基础</a></li>
+    <li><a href="/tags/vue%E5%B0%8F%E5%BA%94%E7%94%A8/">🏷️ vue小应用</a></li>
   
 </ul>
         </div>
@@ -135,53 +135,16 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h1 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h1><h3 id="1-什么是服务器"><a href="#1-什么是服务器" class="headerlink" title="1. 什么是服务器"></a>1. 什么是服务器</h3><p>其实，服务器也是一种计算机，只不过这种计算机，专门用于进行计算机资源的管理。它就像一个资源仓库，存储着各种各样的计算机资源文件，只是因为有着种类繁多而数量庞大内容丰富的服务器的存在，才让咱们的网络世界如此绚丽多姿。</p>
-<h3 id="2-服务器分类："><a href="#2-服务器分类：" class="headerlink" title="2.服务器分类："></a>2.服务器分类：</h3><ol>
-<li><p>WWW 服务器（WWW Server）</p>
-<p>又名 Web 服务器或 HTTP 服务器，这种服务器是 Internet 上最为常见并且使用最为频繁的服务器之一。常见的 Web 资源访问，就是这种服务器提供的。</p>
-</li>
-<li><p>FTP 服务器（FTP Server）</p>
-<p>FTP 服务器是专门为用户提供各种文件的服务器，其存储内容多为文件。</p>
-<p>如需下载文件，只需使用 FTP 客户端软件登录的 FTP 服务器上，将其下载即可，当然，也可以直接将自己本地文件上传 FTP ，供其他用户下载。</p>
-<p>目前我用到的 FTP 服务器就是 学校的 FTP 服务器。</p>
-</li>
-<li><p>邮件服务器（Mail Server）</p>
-<p>这种服务器主要用于邮件的收发，为用户提供电子邮件的接受存储和发送服务。</p>
-</li>
-<li><p>其他：</p>
-<p>还有很多其他服务器，例如：</p>
-<p>数据库服务器、代理服务器（Proxy Server）、域名服务器（Domain Name Server）等等……</p>
-</li>
-</ol>
-<h3 id="3-服务器的操作系统"><a href="#3-服务器的操作系统" class="headerlink" title="3. 服务器的操作系统"></a>3. 服务器的操作系统</h3><ol>
-<li><p>Windows</p>
-<p>优点：图形化界面操作。缺点：成本高，安全性低，能承受访问量低</p>
-</li>
-<li><p>Unix</p>
-<p>目前用的最多的 Unix 服务器就是 Linux </p>
-<p> 最大优势就是：性能高，稳定性好，安全性高，成本几乎为0（由于开源）。</p>
-</li>
-</ol>
-<h3 id="4-Apache-与-IIS"><a href="#4-Apache-与-IIS" class="headerlink" title="4.Apache 与 IIS"></a>4.Apache 与 IIS</h3><ol>
-<li>IIS（InternetInformation Server）</li>
-</ol>
-<p>​        由微软公司开发，是 Windows 操作系统的一部分，允许在Internet 发布信息的 Web 服务器，利用 HTTP 传输信息，可配置 以提供FTP服务。</p>
-<p>​        只能在 Windows 中使用，无法在 Unix 中运行。性能和安全性较差</p>
-<ol start="2">
-<li>Apache</li>
-</ol>
-<p>​        世界排名第一的 WWW 服务器，有一下特性：</p>
-<pre><code>Apache 的特性: 
- 1) 几乎可以运行在所有的计算机平台上（包括Windows） 
- 2) 强大的功能配置； 
- 3) 支持通用网关接口(CGI)； 
- 4) 支持虚拟主机； 
- 5) 支持HTTP认证； 
- 6) 内部集成了代理服务器； 
- 7) 具有用户会话过程的跟踪能力； 
- 8) 支持FASTCGI； 
- 9) 支持[Java ](http://lib.csdn.net/base/java)SERVLETS； 
-</code></pre>
+        <h3 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span><br><br>Vue.config.productionTip = <span class="hljs-literal">false</span><br><br><span class="hljs-keyword">new</span> Vue(&#123;<br>  <span class="hljs-attr">render</span>: <span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> h(App),<br>  <span class="hljs-comment">//安装全局事件总线</span><br>  <span class="hljs-function"><span class="hljs-title">beforeCreate</span>(<span class="hljs-params"></span>)</span> &#123;<br>    Vue.prototype.$bus = <span class="hljs-built_in">this</span>;<br>  &#125;<br>&#125;).$mount(<span class="hljs-string">&#x27;#app&#x27;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="App-vue"><a href="#App-vue" class="headerlink" title="App.vue"></a>App.vue</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div class=&quot;w&quot;&gt;<br>    &lt;SearchBar /&gt;<br>    &lt;List /&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>import List from &quot;./components/List.vue&quot;;<br>import SearchBar from &quot;./components/SearchBar.vue&quot;;<br><br>export default &#123;<br>  name: &quot;App&quot;,<br>  components: &#123;<br>    List,<br>    SearchBar,<br>  &#125;,<br>&#125;;<br>&lt;/script&gt;<br><br>&lt;style scoped&gt;<br>* &#123;<br>  margin: 0px;<br>  padding: 0px;<br>  box-sizing: border-box;<br>&#125;<br>.w &#123;<br>  width: 700px;<br>  margin: 0 auto;<br>  /* background-color: skyblue; */<br>&#125;<br>&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="SearchBar-vue"><a href="#SearchBar-vue" class="headerlink" title="SearchBar.vue"></a>SearchBar.vue</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div class=&quot;HeaderBar&quot;&gt;<br>    &lt;div&gt;<br>      &lt;h2&gt;&#123;&#123; title &#125;&#125;&lt;/h2&gt;<br>    &lt;/div&gt;<br>    &lt;div class=&quot;HeaderButton&quot;&gt;<br>      &lt;input type=&quot;text&quot; v-model=&quot;keyWord&quot; /&gt;<br>      &lt;button @click=&quot;getInformation&quot;&gt;搜索&lt;/button&gt;<br>    &lt;/div&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>import axios from &quot;axios&quot;;<br>export default &#123;<br>  name: &quot;SearchBar&quot;,<br>  data() &#123;<br>    return &#123;<br>      title: &quot;搜索框！&quot;,<br>      searchFile: &#123;&#125;,<br>      keyWord: &quot;&quot;,<br>    &#125;;<br>  &#125;,<br>  methods: &#123;<br>    getInformation() &#123;<br>      if (this.keyWord === &quot;&quot;) return alert(&quot;请您输入搜索内容&quot;);<br>      this.$bus.$emit(&quot;changFirst&quot;, false, true, &quot;&quot;);<br>      axios.get(`https://api.github.com/search/users?q=$&#123;this.keyWord&#125;`).then(<br>        (response) =&gt; &#123;<br>          // console.log(&quot;请求成功了！&quot;, response.data.items);<br>          this.$bus.$emit(&quot;getUsers&quot;, response.data.items);<br>          this.$bus.$emit(&quot;changFirst&quot;, false, false, &quot;&quot;);<br>        &#125;,<br>        (error) =&gt; &#123;<br>          console.log(&quot;false,please check it again&quot;, error.message);<br>          this.$bus.$emit(&quot;changFirst&quot;, false, false, error.message);<br>        &#125;<br>      );<br>    &#125;,<br>  &#125;,<br>&#125;;<br>&lt;/script&gt;<br><br>&lt;style scoped&gt;<br>h2 &#123;<br>  margin: 0;<br>  text-align: center;<br>  font-size: 25px;<br>&#125;<br>.HeaderButton &#123;<br>  text-align: center;<br>&#125;<br><br>.HeaderButton button &#123;<br>  border: 1px solid #ccc;<br>  border-radius: 5px;<br>&#125;<br>&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="List-vue"><a href="#List-vue" class="headerlink" title="List.vue"></a>List.vue</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div class=&quot;list&quot;&gt;<br>    &lt;div v-show=&quot;users.length&quot;&gt;<br>      &lt;ul&gt;<br>        &lt;li v-for=&quot;user in users&quot; :key=&quot;user.login&quot;&gt;<br>          &lt;a :href=&quot;user.html_url&quot;&gt;<br>            &lt;div&gt;<br>              &lt;img :src=&quot;user.avatar_url&quot; alt=&quot;&quot; /&gt;<br>            &lt;/div&gt;<br>            &lt;p&gt;&#123;&#123; user.login &#125;&#125;&lt;/p&gt;<br>          &lt;/a&gt;<br>        &lt;/li&gt;<br>      &lt;/ul&gt;<br>    &lt;/div&gt;<br>    &lt;h1 v-show=&quot;isFirst&quot;&gt;欢迎使用！&lt;/h1&gt;<br>    &lt;h1 v-show=&quot;isLoading&quot;&gt;加载中.....&lt;/h1&gt;<br>    &lt;h1 v-show=&quot;error&quot;&gt;参数错误&lt;/h1&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>export default &#123;<br>  name: &quot;List&quot;,<br>  data() &#123;<br>    return &#123;<br>      isFirst: true,<br>      isLoading: false,<br>      users: [],<br>      error: false,<br>    &#125;;<br>  &#125;,<br>  computed: &#123;&#125;,<br>  methods: &#123;<br>    getUsers(value) &#123;<br>      console.log(&quot;我是list 组件，我收到了参数user&quot;, value);<br>      this.users = value;<br>    &#125;,<br>  &#125;,<br>  mounted() &#123;<br>    this.$bus.$on(&quot;getUsers&quot;, this.getUsers);<br>    this.$bus.$on(&quot;changFirst&quot;, (isFirst, isLoading, errMeg) =&gt; &#123;<br>      this.isFirst = isFirst;<br>      this.isLoading = isLoading;<br>      this.error = errMeg;<br>    &#125;);<br>  &#125;,<br>  beforeDestroy() &#123;<br>    this.$bus.$off(&quot;getUsers&quot;);<br>  &#125;,<br>&#125;;<br>&lt;/script&gt;<br><br>&lt;style scoped&gt;<br>.list &#123;<br>  height: 600px;<br>  /* background-color: pink; */<br>  overflow-y: auto;<br>&#125;<br><br>.list ul li &#123;<br>  width: 200px;<br>  height: 200px;<br>  /* background-color: greenyellow; */<br>  list-style: none;<br>  float: left;<br>  border: 1px solid #ccc;<br>  border-radius: 5px;<br>  text-align: center;<br>  overflow: hidden;<br>  transition: all 0.3s;<br>  /* vertical-align: middle; */<br>&#125;<br><br>.list ul li:hover &#123;<br>  background-color: #fff;<br>  transform: scale(1.1);<br>  /* border: 0px; */<br>&#125;<br>.list ul li:nth-child(3n-2) &#123;<br>  margin-left: 5px;<br>&#125;<br><br>.list ul li div:first-child &#123;<br>  margin-top: 25px;<br>&#125;<br><br>.list ul li img &#123;<br>  width: 100px;<br>  height: 100px;<br>  border-radius: 50%;<br>  /* overflow: hidden; */<br>&#125;<br><br>.list ul li &gt; a &#123;<br>  width: 200px;<br>  height: 200px;<br>  color: #000;<br>  text-decoration: none;<br>  overflow: hidden;<br>  display: block;<br>&#125;<br>&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+
+
+
 
       </section>
 
@@ -189,32 +152,16 @@
       
         <nav class="article-nav">
           
-            <div class="article-nav-item layout-padding">
-  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
-    
-      <div class="card-cover" background-image-lazy data-img="/imgs/10.png"></div>
-    
-    <div class="card-text">
-      
-        <a href="/2022/01/25/vue%E5%A4%8D%E4%B9%A01-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">vue复习1-基础语法与数据代理</h2>
-        </a>
-      
-      <div class="card-text--row">上篇</div>
-    </div>
-  </article>
-</div>
-          
           
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
-      <div class="card-cover" background-image-lazy data-img="/imgs/16.png"></div>
+      <div class="card-cover" background-image-lazy data-img="/imgs/17.png"></div>
     
     <div class="card-text">
       
-        <a href="/2022/01/10/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%80%E5%8D%95%E5%BD%92%E7%BA%B3/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">正则表达式简单归纳</h2>
+        <a href="/2022/01/30/todo-list%E4%B9%8Bvue%E5%AE%9E%E7%8E%B0/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">todo_list之vue实现</h2>
         </a>
       
       <div class="card-text--row">下篇</div>
