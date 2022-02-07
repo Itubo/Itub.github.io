@@ -24,7 +24,7 @@
 
   
 
-  <title>links | Monstershen</title>
+  <title>字数据、寻址和字节顺序 | Monstershen</title>
 
   
 
@@ -45,9 +45,9 @@
   <div class="root-container">
     
 <!-- header container -->
-<header class="header-container">
+<header class="header-container post">
   
-    <div class="post-image" style="background-image: url(/imgs/links.png)"></div>
+    <div class="post-image" style="background-image: url(/imgs/5.png)"></div>
   
 
   <!-- navbar -->
@@ -95,54 +95,106 @@
 
   
   
-
-  
-  
     <div class="header-content">
-      <div class="post-text layout-block layout-padding">
-        <h1 class="title-wrap">links</h1>
-        
-          <h2 class="title-sub-wrap">外链呦！</h2>
-        
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">字数据、寻址和字节顺序</h1>
+          <h2 class="title-sub-wrap">
+            <strong>shen</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2022-02-07T15:42:17.000Z" itemprop="datePublished">2022-02-07</time>
+          </h2>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">📒 深入理解计算机系统</a></li>
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">🏷️ 计算机组成</a></li>
+  
+</ul>
+        </div>
       </div>
     </div>
+  
+
+  
   
   
 </header>
 
-    <!-- 分页(其他自定义页面) -->
+    <!-- 文章 -->
 
-<!-- 自定义页面 -->
-
+<!-- 文章内容 -->
 <div class="body-container">
   <article class="content-container layout-block post-container">
     <div class="article-info">
       
+      
+      
+      
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <p>QQ : 2602877001</p>
-<p>欢迎加QQ交流！</p>
+        <h3 id="字数据"><a href="#字数据" class="headerlink" title="字数据"></a>字数据</h3><ol>
+<li>char 数据类型，在大多数编译器和机器中 将其视为 有符号数 [signed] char。（但不完全是）。</li>
+<li>指针在不同位计算机上，所占字节数不同，32位机 占4 字节，64位机占 8 字节。</li>
+<li>还有不一样的 是 long  32 位机 占4 字节， 64 占 8 字节。</li>
+</ol>
+<p>ps: 程序称为 32 位 或 64 位程序，区别在于 如何编译的。也就是说在编译阶段就已经确定了 该程序的操作平台。</p>
+<h3 id="寻址和字节顺序"><a href="#寻址和字节顺序" class="headerlink" title="寻址和字节顺序"></a>寻址和字节顺序</h3><p>对于跨越多个字节的程序对象，必须建立两个规则：</p>
+<ol>
+<li>对象的地址是什么。</li>
+<li>在内存中如何排列这些地址（用大端法还是小端法）</li>
+</ol>
+<p>举例子 一个数据 0x01234567</p>
+<p>大端法表示：</p>
+<p>​        01 23 45 67</p>
+<p>​        Sun 是大端法机器。</p>
+<p>小端表示：（比较常用）</p>
+<p>​        67 45 23 01 （没错，就是8位汇编所使用的方法）</p>
+<p>在一般使用过程中，使用哪个 都可以，但是在一些信息交流的情况下，必须保证统一。</p>
+<p>ps： 整数 和 这个整数的浮点数，比如1234 和 1234.0 它们的二进制编码中，有一部分 能重叠，也就是，有一部分二进制表示 一样。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//用到的 C 代码</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span>* byte_pointer;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">show_bytes</span><span class="hljs-params">(byte_pointer start, <span class="hljs-keyword">size_t</span> len)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">size_t</span> i;<br>	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; len; i++)<br>	&#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; %.2x&quot;</span>, start[i]);<br>		<span class="hljs-comment">//这是 用数组表示法 来引用 指针。</span><br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">show_int</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span><br><span class="hljs-function"></span>&#123;<br>	show_bytes((byte_pointer)&amp;x, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>));<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">show_float</span><span class="hljs-params">(<span class="hljs-keyword">float</span> x)</span></span><br><span class="hljs-function"></span>&#123;<br>	show_bytes((byte_pointer)&amp;x, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">float</span>));<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">show_pointer</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *x)</span></span><br><span class="hljs-function"></span>&#123;<br>	show_bytes((byte_pointer)&amp;x, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">void</span> *));<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">int</span> p = <span class="hljs-number">12345</span>;<br>	<span class="hljs-keyword">int</span>* arr = &amp;p;<br>	show_int(p);<span class="hljs-comment">//39 30 00 00</span><br>	show_float(<span class="hljs-number">12345.0</span>);<span class="hljs-comment">// 00 e4 40 46</span><br><br>	show_pointer(arr);<span class="hljs-comment">// 24 f7 de c8 0a 00 00 00</span><br>    <span class="hljs-comment">//上面这个如果用 32 位编译器 去处理，会得到 4 字节内容</span><br>    <span class="hljs-comment">//因为 它本质是一个地址，而地址的字节数 随平台不同而不同</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 
       </section>
 
       
       
-        <section class="page-link-container">
+        <nav class="article-nav">
           
-            <div class="link-item layout-padding">
-              <a href="/links" title="友链" class="content-padding--primary soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
-                
-                <div>
-                  <h4 class="text-ellipsis">友链</h4>
-                  
-                </div>
-              </a>
-            </div>
           
-        </section>
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="/imgs/3.png"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2022/02/07/%E5%8D%95%E9%93%BE%E8%A1%A8/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">单链表</h2>
+        </a>
+      
+      <div class="card-text--row">下篇</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
       
 
-      
-      
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
     </div>
     <div class="widget-info">
       <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
@@ -179,6 +231,8 @@
     </div>
   </div>
 </section>
+
+      
 
       
 <section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
@@ -278,7 +332,6 @@
     </div>
   </article>
 </div>
-
 
     <!-- footer container -->
 <footer id="footer" class="footer">
